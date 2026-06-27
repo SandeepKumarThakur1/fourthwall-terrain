@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Brand fonts */
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-subheading: "Lausanne-Regular", system-ui, -apple-system, sans-serif;
+  --font-heading: "cuniona", system-ui, -apple-system, sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, sans-serif;
+}
+
+::selection {
+  background-color: #638552 !important;
+  color: #ededed !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@font-face {
+  font-family: "cuniona";
+  src:
+    url("/fonts/cuniona.otf") format("opentype"),
+    url("/fonts/cranio-oblique.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lausanne-Regular";
+  src:
+    url("/fonts/Lausanne-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+}
+
+/* Headline 1 | Lausanne | 90pt -> 64pt | tracking -4% | line-height 150% */
+.text-headline-1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 130px;
+  letter-spacing: 0;
+  line-height: 100%;
+}
+
+.font-subheading{
+  font-family: var(--font-subheading);
+  font-weight: 400;
+  line-height: 100%;
+}
+
+/* Jagged terrain edge — signature element used at hero/section transitions */
+.terrain-edge {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* button linear gradient */
+.btn-cta {
+  background: linear-gradient(90deg, #638552, #082602);
+  color: white;
+  border: none;
+  padding: 18px 30px;
+  transition: background 0.3s ease;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 12%;
+  text-transform: uppercase;
+}
+
+.btn-cta:hover {
+  background: linear-gradient(90deg, #082602, #638552);
+}
+
+.sectionBg {
+  background: linear-gradient(#FFF9ED, #FFFFFF);
+  color: #0a0a0a;
+}
+
+p{
+  font-size: 16px;
+}
+
