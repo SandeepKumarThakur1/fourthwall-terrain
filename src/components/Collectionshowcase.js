@@ -5,24 +5,24 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const COLLECTIONS = [
-  {
-    name: "The River Residue",
-    description:
-      "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
-    image: "/images/demoProduct.png",
-  },
-  {
-    name: "Canyon Crust",
-    description:
-      "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
-    image: "/images/demoProduct.png",
-  },
-  {
-    name: "Roselle Editions",
-    description:
-      "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
-    image: "/images/demoProduct.png",
-  },
+    {
+        name: "The River Residue",
+        description:
+            "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
+        image: "/images/demoProduct.png",
+    },
+    {
+        name: "Canyon Crust",
+        description:
+            "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
+        image: "/images/demoProduct.png",
+    },
+    {
+        name: "Roselle Editions",
+        description:
+            "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
+        image: "/images/demoProduct.png",
+    },
 ];
 
 // How many viewport-heights of scroll the whole section should take.

@@ -60,7 +60,7 @@ body {
 .text-headline-1 {
   font-family: var(--font-heading);
   font-weight: 400;
-  font-size: 130px;
+  /* font-size: 130px; */
   letter-spacing: 0;
   line-height: 100%;
 }
@@ -107,3 +107,9 @@ p{
   font-size: 16px;
 }
 
+.giftingWrapper{
+  background: url('../../public/images/giftBg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

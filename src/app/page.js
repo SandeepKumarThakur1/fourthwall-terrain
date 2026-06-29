@@ -1,13 +1,11 @@
 import CollectionShowcase from "@/components/Collectionshowcase";
-import OurProcess from "@/components/OurProcess";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <section className="relative flex h-[220vh] w-full items-center overflow-hidden bg-slate">
-        {/* Background image */}
+      <section className="relative flex min-h-[220vh] w-full items-center overflow-hidden bg-slate">
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{
@@ -16,21 +14,20 @@ export default function Home() {
           }}
         />
 
-        {/* Content */}
         <div className="absolute top-[15%] left-[4%]">
-          <h1 className="text-headline-1 text-white">
+          <h1 className="text-headline-1 text-white text-[130px]">
             Bringing life
             <br />
             <span className="pl-[40px]">into your space</span>
           </h1>
         </div>
+
         <div className="absolute bottom-[28%] left-[50%] translate-x-[-50%] text-center ">
           <Link href="/" className="inline-block btn-cta">
             Discover Terrains
           </Link>
         </div>
 
-        {/* Jagged terrain edge transition into next section */}
         <Image
           src="/images/terrainEdge.svg"
           alt="Jagged terrain edge"
@@ -59,8 +56,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <OurProcess/> */}
       <CollectionShowcase />
+
+      <section className="giftingWrapper min-h-[280vh] py-[124px]">
+        <div className="text-center">
+          <h3 className="text-headline-1 text-[130px]">
+            The art of gifting
+            <br />
+            from nature
+          </h3>
+          <Image
+            src="/images/giftImage.png"
+            alt="giftImage"
+            width={1110}
+            height={1000}
+            className="mx-auto mt-[-130px]"
+          />
+          <div className="text-center">
+            <Link href="/" className="inline-block btn-cta">
+              Explore Collection
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
-);
-      }
+  );
+}
