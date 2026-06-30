@@ -14,7 +14,7 @@ export default function Footer() {
                         <h3 className="pb-[20px] text-[14px] font-semibold uppercase tracking-[12%] text-[#FFF9ED80]">
                             Fourthwall Terrains
                         </h3>
-                        <ul className="text-[16px] lh-[140%] tracking-[-1%]">
+                        <ul className="text-[16px] leading-[140%] tracking-[-1%]">
                             <li className="pb-[20px]">
                                 <Link href="/" className="hover:text-white/80/80">
                                     Home
@@ -32,7 +32,7 @@ export default function Footer() {
                         <h3 className="pb-[20px] text-[14px] font-semibold uppercase tracking-[12%] text-[#FFF9ED80]">
                             Collection
                         </h3>
-                        <ul className="text-[16px] lh-[140%] tracking-[-1%]">
+                        <ul className="text-[16px] leading-[140%] tracking-[-1%]">
                             <li className="pb-[20px]">
                                 <Link href="/collections/river-residue" className="hover:text-white/80">
                                     River Residue
@@ -70,7 +70,7 @@ export default function Footer() {
                         <h3 className="pb-[20px] text-[14px] font-semibold uppercase tracking-[12%] text-[#FFF9ED80]">
                             Support
                         </h3>
-                        <ul className="text-[16px] lh-[140%] tracking-[-1%]">
+                        <ul className="text-[16px] leading-[140%] tracking-[-1%]">
                             <li className="pb-[20px]">
                                 <Link href="/support" className="hover:text-white/80">
                                     Customer support
@@ -88,14 +88,14 @@ export default function Footer() {
                         <h3 className="pb-[20px] text-[14px] font-semibold uppercase tracking-[12%] text-[#FFF9ED80]">
                             Office Details
                         </h3>
-                        <p className="flex items-start gap-2 text-sm text-[16px] lh-[140%] tracking-[-1%]">
+                        <p className="flex items-start gap-2 text-sm text-[16px] leading-[140%] tracking-[-1%]">
                             27th main, HSR Road, Bengaluru, India, 560017
                             <a
                                 href="https://maps.google.com/?q=HSR+Layout+Bengaluru"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Open in Google Maps"
-                                className="text-[16px] lh-[140%] tracking-[-1%] hover:text-white/80"
+                                className="text-[16px] leading-[140%] tracking-[-1%] hover:text-white/80"
                             >
                                 ↗
                             </a>
@@ -107,11 +107,11 @@ export default function Footer() {
                 <div className="flex flex-col items-start justify-between gap-4 pb-5 sm:flex-row sm:items-center">
                     <Link
                         href="/"
-                        className="py-5 px-20 text-sm text-[16px] lh-[140%] tracking-[-1%] bg-[#FFF9ED]"
+                        className="py-5 px-20 text-sm text-[16px] leading-[140%] tracking-[-1%] bg-[#FFF9ED]"
                     >
                     </Link>
 
-                    <div className="flex flex-wrap gap-6 text-sm text-[13px] lh-[140%] tracking-[-1%]">
+                    <div className="flex flex-wrap gap-6 text-sm text-[13px] leading-[140%] tracking-[-1%]">
                         <a href="mailto:support@fourthwallterrains.com" className="hover:text-white/80">
                             support@fourthwallterrains.com
                         </a>
@@ -122,7 +122,7 @@ export default function Footer() {
                 </div>
 
                 {/* Copyright */}
-                <div className="border-t border-[#fff9ed4f] pt-6 text-sm text-[13px] lh-[140%] tracking-[-1%]">
+                <div className="border-t border-[#fff9ed4f] pt-6 text-sm text-[13px] leading-[140%] tracking-[-1%]">
                     © {new Date().getFullYear()} Fourthwall Terrains. All rights reserved.
                 </div>
             </div>

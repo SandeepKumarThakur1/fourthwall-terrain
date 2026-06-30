@@ -52,6 +52,7 @@
 
 body {
   background: var(--background);
+  background: #fff !important;
   color: var(--foreground);
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
 }
@@ -65,7 +66,7 @@ body {
   line-height: 100%;
 }
 
-.font-subheading{
+.font-subheading {
   font-family: var(--font-subheading);
   font-weight: 400;
   line-height: 100%;
@@ -103,13 +104,56 @@ body {
   color: #0a0a0a;
 }
 
-p{
+p {
   font-size: 16px;
 }
 
-.giftingWrapper{
-  background: url('../../public/images/giftBg.png');
+.giftingWrapper {
+  background: url('../../public/images/giftBg2.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.testimonialWrapper {
+  background: linear-gradient(69deg, #f3f2ed, #ccc8c3);
+  /* background: url('../../public/images/testimonialBg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 200vh; */
+}
+/* 
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 16px));
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 30s linear infinite;
+} */
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
 }
