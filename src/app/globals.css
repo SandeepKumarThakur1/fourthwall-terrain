@@ -55,6 +55,7 @@ body {
   background: #fff !important;
   color: var(--foreground);
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  font-size: 16px;
 }
 
 /* Headline 1 | Lausanne | 90pt -> 64pt | tracking -4% | line-height 150% */
@@ -104,10 +105,6 @@ body {
   color: #0a0a0a;
 }
 
-p {
-  font-size: 16px;
-}
-
 .giftingWrapper {
   background: url('../../public/images/giftBg2.png');
   background-position: center;
@@ -123,6 +120,7 @@ p {
   background-size: cover;
   min-height: 200vh; */
 }
+
 /* 
 @keyframes marquee {
   0% {
@@ -147,6 +145,7 @@ p {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -156,4 +155,11 @@ p {
   display: flex;
   width: max-content;
   animation: marquee 25s linear infinite;
+}
+
+.ourprocessWrapper {
+  background: url('../../public/images/processBg.png');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
