@@ -1,0 +1,58 @@
+const products = [
+  {
+    id: 1,
+    name: "River Stone",
+    description: "Natural Surface",
+    price: 30000,
+    category: "River Residue",
+    type: "Indoor",
+    image: "/images/product1.jpg",
+  },
+  {
+    id: 2,
+    name: "Sand Dune",
+    description: "Premium Finish",
+    price: 32000,
+    category: "Sand Dunes",
+    type: "Outdoor",
+    image: "/images/product1.jpg",
+  },
+  {
+    id: 3,
+    name: "Roselle",
+    description: "Luxury Collection",
+    price: 28000,
+    category: "Roselle Editions",
+    type: "Indoor",
+    image: "/images/product1.jpg",
+  },
+  {
+    id: 4,
+    name: "Canyon",
+    description: "Elegant Texture",
+    price: 35000,
+    category: "Canyon Crust",
+    type: "Outdoor",
+    image: "/images/product1.jpg",
+  },
+  {
+    id: 5,
+    name: "Fossil Frost",
+    description: "Premium Finish",
+    price: 40000,
+    category: "Fossil Frost",
+    type: "Indoor",
+    image: "/images/product1.jpg",
+  },
+  {
+    id: 6,
+    name: "River Residue",
+    description: "Elegant Surface",
+    price: 30000,
+    category: "River Residue",
+    type: "Outdoor",
+    image: "/images/product1.jpg",
+  },
+];
+
+export default products;

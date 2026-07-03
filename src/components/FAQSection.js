@@ -1,11 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 
 export default function FAQSection() {
   const [active, setActive] = useState(0);
+
+  const answerRefs = useRef([]);
+  const iconRefs = useRef([]);
 
   const faqs = [
     {
@@ -38,90 +42,100 @@ export default function FAQSection() {
     },
   ];
 
+  useEffect(() => {
+    answerRefs.current.forEach((el, index) => {
+      if (!el) return;
+
+      const isOpen = index === active;
+
+      gsap.to(el, {
+        height: isOpen ? "auto" : 0,
+        opacity: isOpen ? 1 : 0,
+        duration: 0.6,
+        ease: "power3.inOut",
+      });
+
+      gsap.to(iconRefs.current[index], {
+        rotate: isOpen ? 180 : 0,
+        duration: 0.5,
+        ease: "power3.out",
+      });
+    });
+  }, [active]);
+
   return (
-<section className="bg-[#F6F0E5] py-[60px] md:py-[100px] px-4 md:px-0">
-  <div className="mx-auto max-w-[90%]">
-
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
-
-      {/* Left */}
-      <div className="flex flex-col justify-start text-center lg:text-left">
-
-        <h2 className="text-[#634020] tracking-[-5%] mb-0 leading-[100%] font-subheading
-          text-[34px] sm:text-[55px] md:text-[80px]">
-          Queries answered
-          <br />
-          for our clients
-        </h2>
-
-        <Link
-          href="/collections/all"
-          className="mt-6 md:mt-8 inline-block w-fit btn-cta mx-auto lg:mx-0"
-        >
-          Ask a Question
-        </Link>
-
-      </div>
-
-      {/* Right */}
-      <div>
-
-        {faqs.map((item, index) => {
-          const open = active === index;
-
-          return (
-            <div
-              key={index}
-              className="border-b border-[#E2D9CB]"
+    <section className="bg-[#F6F0E5] py-[60px] md:py-[100px] px-4 md:px-0">
+      <div className="mx-auto max-w-[90%]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+          {/* Left */}
+          <div className="flex flex-col justify-start text-center lg:text-left">
+            <h2
+              className="text-[#634020] tracking-[-5%] mb-0 leading-[100%] font-subheading
+              text-[34px] sm:text-[55px] md:text-[80px]"
             >
+              Queries answered
+              <br />
+              for our clients
+            </h2>
 
-              <button
-                onClick={() => setActive(open ? -1 : index)}
-                className="flex w-full items-start justify-between gap-4 md:gap-6 pt-5 md:pt-7 pb-3 md:pb-4 text-left"
-              >
+            <Link
+              href="/collections/all"
+              className="mt-6 md:mt-8 inline-block w-fit btn-cta mx-auto lg:mx-0"
+            >
+              Ask a Question
+            </Link>
+          </div>
 
-                <span className="text-[#634020] font-[500] leading-[150%] tracking-[-4%]
-                  text-[15px] md:text-[18px]">
-                  {item.question}
-                </span>
-
-                {open ? (
-                  <ChevronUp
-                    size={18}
-                    className="mt-1 shrink-0 text-[#634020]"
-                  />
-                ) : (
-                  <ChevronDown
-                    size={18}
-                    className="mt-1 shrink-0 text-[#634020]"
-                  />
-                )}
-
-              </button>
-
+          {/* Right */}
+          <div>
+            {faqs.map((item, index) => (
               <div
-                className={`grid transition-all duration-500 ${
-                  open ? "grid-rows-[1fr] pb-4 md:pb-6" : "grid-rows-[0fr]"
-                }`}
+                key={index}
+                className="border-b border-[#E2D9CB]"
               >
-                <div className="overflow-hidden">
+                <button
+                  onClick={() =>
+                    setActive(active === index ? -1 : index)
+                  }
+                  className="flex w-full items-start justify-between gap-4 pt-6 pb-4 text-left"
+                >
+                  <span
+                    className={`text-[15px] md:text-[18px] font-medium leading-[150%] transition-colors duration-300 ${active === index
+                      ? "text-[#697A07]"
+                      : "text-[#634020]"
+                      }`}
+                  >
+                    {item.question}
+                  </span>
 
-                  <p className="text-[#697A07] font-[500] leading-[150%] tracking-[-4%]
-                    text-[14px] md:text-[18px]">
+                  <div
+                    ref={(el) => (iconRefs.current[index] = el)}
+                    className="shrink-0"
+                  >
+                    <ChevronDown
+                      size={20}
+                      className="text-[#634020]"
+                    />
+                  </div>
+                </button>
+
+                <div
+                  ref={(el) => (answerRefs.current[index] = el)}
+                  style={{
+                    height: index === 0 ? "auto" : 0,
+                    overflow: "hidden",
+                    opacity: index === 0 ? 1 : 0,
+                  }}
+                >
+                  <p className="pb-6 text-[14px] md:text-[18px] text-[#697A07] leading-[150%]">
                     {item.answer}
                   </p>
-
                 </div>
               </div>
-
-            </div>
-          );
-        })}
-
+            ))}
+          </div>
+        </div>
       </div>
-
-    </div>
-  </div>
-</section>
+    </section>
   );
 }

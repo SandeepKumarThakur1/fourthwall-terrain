@@ -26,12 +26,12 @@ export default function Header() {
                     <Link href="/">Home</Link>
                     <Link href="/about">About Us</Link>
                     <Link href="/gifting">Gifting</Link>
-                    <Link href="/catalogue">Catalogue</Link>
+                    <Link href="">Catalogue</Link>
                 </nav>
 
                 {/* Contact */}
                 <Link
-                    href="/contact"
+                    href="/contact-us"
                     className="hidden md:block text-[12px] md:text-[14px] font-semibold uppercase tracking-[8%] text-[#412F23]"
                 >
                     Contact Us
@@ -70,7 +70,7 @@ export default function Header() {
                     <Link onClick={() => setOpen(false)} href="/about">About Us</Link>
                     <Link onClick={() => setOpen(false)} href="/gifting">Gifting</Link>
                     <Link onClick={() => setOpen(false)} href="/catalogue">Catalogue</Link>
-                    <Link onClick={() => setOpen(false)} href="/contact">Contact Us</Link>
+                    <Link onClick={() => setOpen(false)} href="/contact-us">Contact Us</Link>
 
                 </div>
 
