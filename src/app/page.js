@@ -1,3 +1,5 @@
+"use client";
+
 import HeroSection from "@/components/Hero";
 import CraftedInStone from "@/components/CraftedInStone";
 import CollectionShowcase from "@/components/Collectionshowcase";

@@ -16,12 +16,12 @@ export default function Footer() {
                         </h3>
                         <ul className="text-[16px] leading-[140%] tracking-[-1%]">
                             <li className="pb-[20px]">
-                                <Link href="/" className="hover:text-white/80/80">
+                                <Link href="/" className="text-white hover:text-white/80/80">
                                     Home
                                 </Link>
                             </li>
                             <li className="pb-[20px]">
-                                <Link href="/about" className="hover:text-white/80/80">
+                                <Link href="/about" className="text-white hover:text-white/80/80">
                                     About Us
                                 </Link>
                             </li>
@@ -34,32 +34,32 @@ export default function Footer() {
                         </h3>
                         <ul className="text-[16px] leading-[140%] tracking-[-1%]">
                             <li className="pb-[20px]">
-                                <Link href="/collections/river-residue" className="hover:text-white/80">
+                                <Link href="/collections/river-residue" className="text-white hover:text-white/80/80">
                                     River Residue
                                 </Link>
                             </li>
                             <li className="pb-[20px]">
-                                <Link href="/collections/canyon-crust" className="hover:text-white/80">
+                                <Link href="/collections/canyon-crust" className="text-white hover:text-white/80/80">
                                     Canyon Crust
                                 </Link>
                             </li>
                             <li className="pb-[20px]">
-                                <Link href="/collections/roselle-editions" className="hover:text-white/80">
+                                <Link href="/collections/roselle-editions" className="text-white hover:text-white/80/80">
                                     Roselle Editions
                                 </Link>
                             </li>
                             <li className="pb-[20px]">
-                                <Link href="/collections/sand-dunes" className="hover:text-white/80">
+                                <Link href="/collections/sand-dunes" className="text-white hover:text-white/80/80">
                                     Sand Dunes
                                 </Link>
                             </li>
                             <li className="pb-[20px]">
-                                <Link href="/collections/fossil-frost" className="hover:text-white/80">
+                                <Link href="/collections/fossil-frost" className="text-white hover:text-white/80/80">
                                     Fossil Frost
                                 </Link>
                             </li>
                             <li className="pb-[20px]">
-                                <Link href="/collections/gifting" className="hover:text-white/80">
+                                <Link href="/collections/gifting" className="text-white hover:text-white/80/80">
                                     The Gifting Collection
                                 </Link>
                             </li>
@@ -72,12 +72,12 @@ export default function Footer() {
                         </h3>
                         <ul className="text-[16px] leading-[140%] tracking-[-1%]">
                             <li className="pb-[20px]">
-                                <Link href="/support" className="hover:text-white/80">
+                                <Link href="/support" className="text-white hover:text-white/80/80">
                                     Customer support
                                 </Link>
                             </li>
                             <li className="pb-[20px]">
-                                <Link href="/contact" className="hover:text-white/80">
+                                <Link href="/contact" className="text-white hover:text-white/80/80">
                                     Ask a question
                                 </Link>
                             </li>
@@ -112,10 +112,10 @@ export default function Footer() {
                     </Link>
 
                     <div className="flex flex-wrap gap-6 text-sm text-[13px] leading-[140%] tracking-[-1%]">
-                        <a href="mailto:support@fourthwallterrains.com" className="hover:text-white/80">
+                        <a href="mailto:support@fourthwallterrains.com" className="text-white hover:text-white/80">
                             support@fourthwallterrains.com
                         </a>
-                        <a href="tel:+911176465348" className="hover:text-white/80">
+                        <a href="tel:+911176465348" className="text-white hover:text-white/80">
                             +91-1176465348
                         </a>
                     </div>

@@ -1,7 +1,8 @@
 "use client";
 
+import gsap from "gsap";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const STEPS = [
   {
@@ -16,8 +17,6 @@ const STEPS = [
     ],
     rotations: ["-6deg", "2deg", "-2deg"],
     offsets: ["16px", "-8px", "24px"],
-    // alternate vertical placement: "up" = photos on top, text below
-    //                                "down" = text on top, photos below
     layout: "up",
   },
   {
@@ -99,20 +98,21 @@ const VECTOR_PATH =
 export default function OurProcess() {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
-  const linePathRef = useRef(null); // animated (colored) line ref
+  const svgWrapRef = useRef(null);
+  const linePathRef = useRef(null);
   const stepRefs = useRef([]);
+  const [svgWidth, setSvgWidth] = useState(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    let killAll = () => { };
+    let mm;
 
     const initGSAP = async () => {
       const gsap = (await import("gsap")).default;
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
       gsap.registerPlugin(ScrollTrigger);
 
-      // Wait two frames — ensures DOM is painted and scrollWidth is measured correctly
       await new Promise((r) => requestAnimationFrame(r));
       await new Promise((r) => requestAnimationFrame(r));
 
@@ -121,95 +121,137 @@ export default function OurProcess() {
       const linePath = linePathRef.current;
       if (!track || !section) return;
 
-      // ── 1. Entry animation for Step 01 photos + text ────────────────────
+      // keep the decorative svg exactly as wide as the track content
+      const syncSvgWidth = () => setSvgWidth(track.scrollWidth);
+      syncSvgWidth();
+      window.addEventListener("resize", syncSvgWidth);
+
+      if (linePath) {
+        const lineLen = linePath.getTotalLength();
+        gsap.set(linePath, { strokeDasharray: lineLen, strokeDashoffset: lineLen });
+      }
+
+      // Entry animation for Step 01 photos + text (runs on all breakpoints)
       const firstStep = stepRefs.current[0];
       if (firstStep) {
         const photos = firstStep.querySelectorAll(".proc-photo");
         const meta = firstStep.querySelector(".proc-meta");
-        gsap.set(photos, { opacity: 0, y: 80 });
-        gsap.set(meta, { opacity: 0, y: 40 });
+        gsap.set(photos, { opacity: 0, y: 60 });
+        gsap.set(meta, { opacity: 0, y: 30 });
 
         ScrollTrigger.create({
           trigger: section,
-          start: "top 75%",
+          start: "top 80%",
           once: true,
           onEnter: () => {
             gsap.to(photos, { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "power3.out" });
-            gsap.to(meta, { opacity: 1, y: 0, duration: 0.9, delay: 0.35, ease: "power2.out" });
+            gsap.to(meta, { opacity: 1, y: 0, duration: 0.9, delay: 0.3, ease: "power2.out" });
           },
         });
       }
 
-      // ── 2. Colored line: hidden at start, base (faded) line always visible ──
-      if (linePath) {
-        const lineLen = linePath.getTotalLength();
-        gsap.set(linePath, {
-          strokeDasharray: lineLen,
-          strokeDashoffset: lineLen,
+      // Fade-in for steps 2-6 when NOT using pinned horizontal scroll (mobile/tablet)
+      const restFadeIns = () => {
+        stepRefs.current.slice(1).forEach((el) => {
+          if (!el) return;
+          const photos = el.querySelectorAll(".proc-photo");
+          const meta = el.querySelector(".proc-meta");
+          gsap.set(photos, { opacity: 0, y: 40 });
+          gsap.set(meta, { opacity: 0, y: 20 });
+          ScrollTrigger.create({
+            trigger: el,
+            start: "top 85%",
+            once: true,
+            onEnter: () => {
+              gsap.to(photos, { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: "power3.out" });
+              gsap.to(meta, { opacity: 1, y: 0, duration: 0.7, delay: 0.2, ease: "power2.out" });
+            },
+          });
         });
-      }
+      };
 
-      // ── 3. PIN + HORIZONTAL SCROLL + LINE DRAW (all tied to one ST) ────
-      const totalScrollWidth = track.scrollWidth - window.innerWidth;
+      // matchMedia: desktop/tablet-landscape gets pinned horizontal scroll,
+      // small screens get a normal vertical stack with fade-ins instead.
+      mm = ScrollTrigger.matchMedia({
+        "(min-width: 768px)": function () {
+          const totalScrollWidth = track.scrollWidth - window.innerWidth;
+          const tl = gsap.timeline({ defaults: { ease: "none" } });
 
-      const tl = gsap.timeline({ defaults: { ease: "none" } });
+          tl.to(track, { x: -totalScrollWidth }, 0);
+          if (linePath) tl.to(linePath, { strokeDashoffset: 0 }, 0);
 
-      // Horizontal track move
-      tl.to(track, { x: -totalScrollWidth }, 0);
+          const pinST = ScrollTrigger.create({
+            animation: tl,
+            trigger: section,
+            start: "top top",
+            end: () => `+=${totalScrollWidth}`,
+            pin: true,
+            pinSpacing: true,
+            scrub: 1.2,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          });
 
-      // Colored line draw — runs in parallel (same duration, position 0)
-      if (linePath) {
-        tl.to(linePath, { strokeDashoffset: 0 }, 0);
-      }
-
-      const pinST = ScrollTrigger.create({
-        animation: tl,
-        trigger: section,
-        start: "top top",
-        end: () => `+=${totalScrollWidth}`,
-        pin: true,
-        pinSpacing: true,
-        scrub: 1.2,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
+          return () => pinST.kill();
+        },
+        "(max-width: 767px)": function () {
+          // draw the line progressively as the user scrolls the whole (tall) section instead
+          let lineST;
+          if (linePath) {
+            lineST = ScrollTrigger.create({
+              trigger: section,
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 1,
+              onUpdate: (self) => {
+                gsap.set(linePath, {
+                  strokeDashoffset: linePath.getTotalLength() * (1 - self.progress),
+                });
+              },
+            });
+          }
+          restFadeIns();
+          return () => lineST && lineST.kill();
+        },
       });
 
-      killAll = () => {
-        pinST.kill();
-        ScrollTrigger.getAll().forEach((st) => st.kill());
+      return () => {
+        window.removeEventListener("resize", syncSvgWidth);
       };
     };
 
-    initGSAP();
-    return () => killAll();
+    let cleanup;
+    initGSAP().then((c) => (cleanup = c));
+
+    return () => {
+      if (cleanup) cleanup();
+      if (mm) mm.kill();
+    };
   }, []);
 
   return (
-    <section ref={sectionRef} className=" relative overflow-hidden bg-[#062400] h-[120vh] z-10">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-[#062400] h-auto md:h-[120vh] z-10"
+    >
       <div className="ourprocessWrapper w-full h-full">
-        <div className=" py-10 w-[90%] mx-auto">
+        <div className="py-6 sm:py-8 md:py-10 w-[92%] sm:w-[90%] mx-auto h-full flex flex-col">
           {/* Eyebrow */}
-          <p className="z-20 text-[14px] font-[600] uppercase tracking-[12%] leading-[100%] text-white uppercase pt-[15px]">
+          <p className="z-20 text-[12px] sm:text-[13px] md:text-[14px] font-[600] uppercase tracking-[12%] leading-[100%] text-white pt-2 md:pt-[15px]">
             Our Process
           </p>
 
-          {/*
-          ── VECTOR_10 SVG LINE ────────────────────────────────────────────
-          Two paths sharing the same "d": a faded base track that is always
-          fully visible, and a colored path on top whose strokeDashoffset is
-          animated by GSAP from full length -> 0 as you scroll. This gives
-          the "line is faded from the start, color fills in on scroll" look.
-        */}
+          {/* VECTOR_10 SVG LINE — only shown on md+ where the horizontal scroll happens */}
           <svg
+            ref={svgWrapRef}
             aria-hidden="true"
-            className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 z-10"
-            style={{ width: `${STEPS.length * 30}vw`, height: "60%" }}
+            className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:block"
+            style={{ width: svgWidth ? `${svgWidth}px` : "100%", height: "60%" }}
             viewBox="0 0 6237 806"
             preserveAspectRatio="none"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* always-visible faded track */}
             <path
               d={VECTOR_PATH}
               stroke="#ffffff"
@@ -218,7 +260,6 @@ export default function OurProcess() {
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            {/* colored progress line — drawn in on scroll */}
             <path
               ref={linePathRef}
               d={VECTOR_PATH}
@@ -230,11 +271,10 @@ export default function OurProcess() {
             />
           </svg>
 
-          {/* Scrolling track — GSAP translates this left as user scrolls */}
+          {/* Track — horizontal flex + pinned scroll on md+, vertical stack on mobile */}
           <div
             ref={trackRef}
-            className="relative z-10 flex items-center will-change-transform h-full"
-            style={{ width: `${STEPS.length * 35}vw` }}
+            className="relative z-10 flex flex-col md:flex-row items-stretch md:items-center will-change-transform flex-1 md:h-full gap-16 md:gap-0 w-full md:w-max"
           >
             {STEPS.map((step, i) => {
               const isDown = step.layout === "down";
@@ -242,19 +282,21 @@ export default function OurProcess() {
                 <article
                   key={step.number}
                   ref={(el) => (stepRefs.current[i] = el)}
-                  className={`relative flex h-full w-[75vw] shrink-0 flex-col px-16 md:px-20 ${isDown
-                    ? "justify-end pb-[5vh]"
-                    : "justify-start pt-[5vh]"
-                    }`}
+                  className={`relative flex flex-col w-full md:h-full md:w-[70vw] lg:w-[65vw] xl:w-[55vw] shrink-0 px-1 sm:px-4 md:px-16 lg:px-20 ${
+                    isDown
+                      ? "md:justify-end md:pb-[5vh]"
+                      : "md:justify-start md:pt-[5vh]"
+                  }`}
                 >
                   {/* Polaroid cluster */}
                   <div
-                    className={`proc-photo-cluster relative h-[250px] w-full max-w-[560px] ${isDown ? "order-2 mt-10" : "order-1 mb-10"
-                      }`}
+                    className={`proc-photo-cluster relative h-[170px] xs:h-[200px] sm:h-[220px] md:h-[250px] w-full max-w-[280px] sm:max-w-[420px] md:max-w-[560px] mx-auto md:mx-0 ${
+                      isDown ? "order-2 mt-6 md:mt-10" : "order-1 mb-6 md:mb-10"
+                    }`}
                   >
                     {/* Back-left photo */}
                     <div
-                      className="proc-photo absolute left-0 top-6 h-[250px] w-[250px] bg-[#f3ebdb] p-2 shadow-2xl"
+                      className="proc-photo absolute left-0 top-3 sm:top-4 md:top-6 h-[140px] w-[140px] sm:h-[180px] sm:w-[180px] md:h-[250px] md:w-[250px] bg-[#f3ebdb] p-1.5 sm:p-2 shadow-2xl"
                       style={{ rotate: step.rotations[0], translateY: step.offsets[0] }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -263,7 +305,7 @@ export default function OurProcess() {
 
                     {/* Center portrait */}
                     <div
-                      className="proc-photo absolute left-[32%] top-0 z-10 h-[250px] w-[250px] bg-[#f3ebdb] p-2 shadow-2xl"
+                      className="proc-photo absolute left-[28%] sm:left-[30%] md:left-[32%] top-0 z-10 h-[140px] w-[140px] sm:h-[180px] sm:w-[180px] md:h-[250px] md:w-[250px] bg-[#f3ebdb] p-1.5 sm:p-2 shadow-2xl"
                       style={{ rotate: step.rotations[1], translateY: step.offsets[1] }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -272,7 +314,7 @@ export default function OurProcess() {
 
                     {/* Right landscape photo */}
                     <div
-                      className="proc-photo absolute right-0 top-5 h-[250px] w-[250px] bg-[#f3ebdb] p-2 shadow-2xl"
+                      className="proc-photo absolute right-0 top-2 sm:top-3 md:top-5 h-[140px] w-[140px] sm:h-[180px] sm:w-[180px] md:h-[250px] md:w-[250px] bg-[#f3ebdb] p-1.5 sm:p-2 shadow-2xl"
                       style={{ rotate: step.rotations[2], translateY: step.offsets[2] }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -281,14 +323,18 @@ export default function OurProcess() {
                   </div>
 
                   {/* Number + title + description */}
-                  <div className={`proc-meta ${isDown ? "order-1" : "order-2"}`}>
-                    <p className="mt-3 font-heading text-[100px] font-[400] leading-[100%] text-white">
+                  <div
+                    className={`proc-meta text-center md:text-left ${
+                      isDown ? "order-1" : "order-2"
+                    }`}
+                  >
+                    <p className="mt-2 md:mt-3 font-heading text-[56px] sm:text-[72px] md:text-[90px] lg:text-[100px] font-[400] leading-[100%] text-white">
                       {step.number}
                     </p>
-                    <h3 className="mt-3 font-subheading text-[30px] font-[400] tracking-[-4%] leading-[150%] text-white">
+                    <h3 className="mt-2 md:mt-3 font-subheading text-[22px] sm:text-[26px] md:text-[30px] font-[400] tracking-[-4%] leading-[130%] md:leading-[150%] text-white">
                       {step.title}
                     </h3>
-                    <p className="mt-3 max-w-[380px] text-[16px] leading-[150%] tracking-[-4%] text-white font-body">
+                    <p className="mt-2 md:mt-3 max-w-[380px] mx-auto md:mx-0 text-[14px] sm:text-[15px] md:text-[16px] leading-[150%] tracking-[-4%] text-white font-body">
                       {step.description}
                     </p>
                   </div>
@@ -297,7 +343,9 @@ export default function OurProcess() {
             })}
           </div>
         </div>
-        <div className="leftvectorProcess absolute top-0 bottom-0">
+
+        {/* Decorative side vector — only meaningful on larger screens */}
+        <div className="leftvectorProcess hidden lg:block absolute top-0 bottom-0">
           <Image
             src="/images/ourprocessSvg.svg"
             alt="ourprocessSvg"

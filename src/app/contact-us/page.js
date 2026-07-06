@@ -75,7 +75,7 @@ export default function ContactPage() {
               <div className="flex justify-center pt-4">
                 <button
                   type="submit"
-                  className="min-w-[220px] bg-white px-12 py-5 text-lg font-semibold uppercase tracking-[4px] text-[#50652B] transition hover:bg-[#50652B] hover:text-white"
+                  className="cursor-pointer min-w-[220px] bg-white px-12 py-5 text-lg font-semibold uppercase tracking-[4px] text-[#50652B] transition hover:bg-[#50652B] hover:text-white"
                 >
                   Submit
                 </button>
@@ -92,12 +92,12 @@ export default function ContactPage() {
             <div className="flex flex-col gap-2 md:flex-row md:gap-12">
               <a
                 href="mailto:support@fourthwallterrains.com"
-                className="hover:underline"
+                className="text-white hover:underline"
               >
                 support@fourthwallterrains.com
               </a>
 
-              <a href="tel:+911171640348" className="hover:underline">
+              <a href="tel:+911171640348" className="text-white hover:underline">
                 +91-1171640348
               </a>
             </div>
