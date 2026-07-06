@@ -49,7 +49,7 @@ export default function Header() {
 
             {/* MOBILE FULL SCREEN MENU */}
             <div
-                className={`fixed top-0 left-0 h-full w-full bg-white z-50 transform transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"
+                className={`fixed top-0 left-0 h-full w-full bg-white h-screen z-50 transform transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"
                     }`}
             >
 
@@ -69,7 +69,7 @@ export default function Header() {
                     <Link onClick={() => setOpen(false)} href="/">Home</Link>
                     <Link onClick={() => setOpen(false)} href="/about">About Us</Link>
                     <Link onClick={() => setOpen(false)} href="/gifting">Gifting</Link>
-                    <Link onClick={() => setOpen(false)} href="/catalogue">Catalogue</Link>
+                    <Link onClick={() => setOpen(false)} href="">Catalogue</Link>
                     <Link onClick={() => setOpen(false)} href="/contact-us">Contact Us</Link>
 
                 </div>

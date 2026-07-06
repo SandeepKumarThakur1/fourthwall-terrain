@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 
 export default function FAQSection() {
   const [active, setActive] = useState(0);

@@ -282,17 +282,15 @@ export default function OurProcess() {
                 <article
                   key={step.number}
                   ref={(el) => (stepRefs.current[i] = el)}
-                  className={`relative flex flex-col w-full md:h-full md:w-[70vw] lg:w-[65vw] xl:w-[55vw] shrink-0 px-1 sm:px-4 md:px-16 lg:px-20 ${
-                    isDown
+                  className={`relative flex flex-col w-full md:h-full md:w-[70vw] lg:w-[65vw] xl:w-[55vw] shrink-0 px-1 sm:px-4 md:px-16 lg:px-20 ${isDown
                       ? "md:justify-end md:pb-[5vh]"
                       : "md:justify-start md:pt-[5vh]"
-                  }`}
+                    }`}
                 >
                   {/* Polaroid cluster */}
                   <div
-                    className={`proc-photo-cluster relative h-[170px] xs:h-[200px] sm:h-[220px] md:h-[250px] w-full max-w-[280px] sm:max-w-[420px] md:max-w-[560px] mx-auto md:mx-0 ${
-                      isDown ? "order-2 mt-6 md:mt-10" : "order-1 mb-6 md:mb-10"
-                    }`}
+                    className={`proc-photo-cluster relative h-[170px] xs:h-[200px] sm:h-[220px] md:h-[250px] w-full max-w-[280px] sm:max-w-[420px] md:max-w-[560px] mx-auto md:mx-0 ${isDown ? "order-2 mt-6 md:mt-10" : "order-1 mb-6 md:mb-10"
+                      }`}
                   >
                     {/* Back-left photo */}
                     <div
@@ -324,9 +322,8 @@ export default function OurProcess() {
 
                   {/* Number + title + description */}
                   <div
-                    className={`proc-meta text-center md:text-left ${
-                      isDown ? "order-1" : "order-2"
-                    }`}
+                    className={`proc-meta text-center md:text-left ${isDown ? "order-1" : "order-2"
+                      }`}
                   >
                     <p className="mt-2 md:mt-3 font-heading text-[56px] sm:text-[72px] md:text-[90px] lg:text-[100px] font-[400] leading-[100%] text-white">
                       {step.number}
