@@ -7,75 +7,106 @@ import { Menu, X } from "lucide-react";
 export default function Header() {
     const [open, setOpen] = useState(false);
 
-    return (
-        <header className="fixed top-0 left-0 z-50 w-full bg-transparent backdrop-blur-sm">
+    const links = [
+        { name: "Home", href: "/" },
+        { name: "About Us", href: "/about" },
+        { name: "Gifting", href: "/gifting" },
+        { name: "Catalogue", href: "#" },
+    ];
 
-            {/* TOP BAR */}
-            <div className="mx-auto flex max-w-[90%] items-center justify-between py-4 md:py-6">
+    return (
+        <header
+            className="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md animate-in fade-in slide-in-from-top-5 duration-700"
+        >
+            <div className="mx-auto flex max-w-[90%] items-center justify-between py-5">
 
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="text-[12px] md:text-[14px] font-semibold uppercase tracking-[8%] md:tracking-[12%] text-[#412F23] md:text-[#412F23]"
+                    className="text-sm font-semibold uppercase tracking-[0.18em] text-[#412F23] transition-all duration-500 hover:opacity-70"
                 >
                     Fourthwall Terrain
                 </Link>
 
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex gap-6 lg:gap-10 text-[12px] lg:text-[14px] font-semibold uppercase tracking-[8%] text-[#412F23]">
-                    <Link href="/">Home</Link>
-                    <Link href="/about">About Us</Link>
-                    <Link href="/gifting">Gifting</Link>
-                    <Link href="">Catalogue</Link>
+                {/* Desktop Navigation */}
+                <nav className="hidden items-center gap-10 md:flex">
+                    {links.map((item, index) => (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            className="group relative overflow-hidden text-sm font-semibold uppercase tracking-[0.12em] text-[#412F23] transition-all duration-300"
+                            style={{
+                                animationDelay: `${index * 120}ms`,
+                            }}
+                        >
+                            {item.name}
+
+                            <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#412F23] transition-transform duration-500 group-hover:scale-x-100"></span>
+                        </Link>
+                    ))}
                 </nav>
 
                 {/* Contact */}
                 <Link
                     href="/contact-us"
-                    className="hidden md:block text-[12px] md:text-[14px] font-semibold uppercase tracking-[8%] text-[#412F23]"
+                    className="group relative hidden text-sm font-semibold uppercase tracking-[0.12em] text-[#412F23] md:block"
                 >
                     Contact Us
+
+                    <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#412F23] transition-transform duration-500 group-hover:scale-x-100"></span>
                 </Link>
 
                 {/* Mobile Button */}
                 <button
-                    className="md:hidden text-[#412F23]"
                     onClick={() => setOpen(true)}
+                    className="transition-transform duration-300 hover:scale-110 md:hidden"
                 >
-                    <Menu size={22} />
+                    <Menu className="text-[#412F23]" size={24} />
                 </button>
-
             </div>
 
-            {/* MOBILE FULL SCREEN MENU */}
+            {/* Mobile Menu */}
             <div
-                className={`fixed top-0 left-0 h-full w-full bg-white h-screen z-50 transform transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"
+                className={`min-h-screen fixed inset-0 z-[100] bg-[#FFF9ED] transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]
+                ${open
+                        ? "translate-x-0 opacity-100"
+                        : "translate-x-full opacity-0 pointer-events-none"
                     }`}
             >
-
                 {/* Close */}
                 <div className="flex justify-end p-6">
                     <button
                         onClick={() => setOpen(false)}
-                        className="text-[#412F23]"
+                        className="transition-transform duration-300 hover:rotate-90"
                     >
-                        <X size={24} />
+                        <X size={28} className="text-[#412F23]" />
                     </button>
                 </div>
 
                 {/* Links */}
-                <div className="flex flex-col items-start gap-8 px-8 pt-10 text-[18px] font-semibold uppercase text-[#1a1a1a]">
-
-                    <Link onClick={() => setOpen(false)} href="/">Home</Link>
-                    <Link onClick={() => setOpen(false)} href="/about">About Us</Link>
-                    <Link onClick={() => setOpen(false)} href="/gifting">Gifting</Link>
-                    <Link onClick={() => setOpen(false)} href="">Catalogue</Link>
-                    <Link onClick={() => setOpen(false)} href="/contact-us">Contact Us</Link>
-
+                <div className="flex flex-col gap-8 px-8 pt-10">
+                    {[...links, { name: "Contact Us", href: "/contact-us" }].map(
+                        (item, index) => (
+                            <Link
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setOpen(false)}
+                                className={`text-3xl font-semibold uppercase text-[#412F23]
+                                transition-all duration-700
+                                ${open
+                                        ? "translate-x-0 opacity-100"
+                                        : "translate-x-10 opacity-0"
+                                    }`}
+                                style={{
+                                    transitionDelay: `${index * 80}ms`,
+                                }}
+                            >
+                                {item.name}
+                            </Link>
+                        )
+                    )}
                 </div>
-
             </div>
-
         </header>
     );
 }
