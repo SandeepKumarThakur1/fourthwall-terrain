@@ -142,7 +142,7 @@ export default function CollectionShowcase() {
                                         alt={item.name}
                                         width={300}
                                         height={350}
-                                        className="object-contain w-[180px] sm:w-[240px] md:w-[300px] h-auto"
+                                        className="object-contain w-[180px] sm:w-[240px] md:w-[300px] h-[180px] sm:h-[240px] md:h-[300px]"
                                     />
 
                                     <h3 className="mt-4 md:mt-6 text-[#1a1a1a] font-subheading
