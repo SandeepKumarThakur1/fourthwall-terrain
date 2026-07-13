@@ -11,9 +11,9 @@ const STEPS = [
     description:
       "Carefully sourced from riverbeds, natural terrains, and stone-rich regions, each stone is selected for its texture, shape, and unique character.",
     images: [
-      "https://images.unsplash.com/photo-1518623001779-7374ec5e0d22?q=80&w=500",
-      "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=500",
-      "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=500",
+      "./images/ourprocess/stone-procurement.png",
+      "./images/ourprocess/stone-procurement2.png",
+      "./images/ourprocess/stone-procurement3.png",
     ],
     rotations: ["-6deg", "2deg", "-2deg"],
     offsets: ["16px", "-8px", "24px"],
@@ -25,9 +25,9 @@ const STEPS = [
     description:
       "Every stone is individually inspected and curated based on its form, durability, and aesthetic potential. Only a select few make it into the collection.",
     images: [
-      "https://images.unsplash.com/photo-1607968565043-36af90dde238?q=80&w=500",
-      "https://images.unsplash.com/photo-1620503374956-c942862f0372?q=80&w=500",
-      "https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=500",
+      "./images/ourprocess/selection-sorting.png",
+      "./images/ourprocess/selection-sorting2.png",
+      "./images/ourprocess/selection-sorting3.png",
     ],
     rotations: ["3deg", "-4deg", "1deg"],
     offsets: ["-8px", "20px", "-16px"],
@@ -39,9 +39,9 @@ const STEPS = [
     description:
       "The stone is shaped and refined while preserving its natural identity, ensuring every piece retains the raw beauty that makes it unique.",
     images: [
-      "https://images.unsplash.com/photo-1567361672830-f7aa808fb5d3?q=80&w=500",
-      "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=500",
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=500",
+      "./images/ourprocess/crafting-refinement.png",
+      "./images/ourprocess/crafting-refinement2.png",
+      "./images/ourprocess/crafting-refinement3.png",
     ],
     rotations: ["-3deg", "5deg", "-1deg"],
     offsets: ["8px", "-20px", "12px"],
@@ -53,9 +53,9 @@ const STEPS = [
     description:
       "Surfaces are finished, textures are enhanced, and every detail is perfected to create a balance between nature and contemporary design.",
     images: [
-      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=500",
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=500",
-      "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=500",
+      "./images/ourprocess/finishing-detailing.png",
+      "./images/ourprocess/finishing-detailing2.png",
+      "./images/ourprocess/finishing-detailing3.png",
     ],
     rotations: ["4deg", "-2deg", "6deg"],
     offsets: ["-12px", "24px", "-4px"],
@@ -67,9 +67,9 @@ const STEPS = [
     description:
       "Each piece is thoughtfully paired with carefully chosen greenery, balancing raw mineral texture with the soft living quality of plants.",
     images: [
-      "https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=500",
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=500",
-      "https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=500",
+      "./images/ourprocess/curated-plant-pairing.png",
+      "./images/ourprocess/curated-plant-pairing2.png",
+      "./images/ourprocess/curated-plant-pairing3.png",
     ],
     rotations: ["-5deg", "3deg", "-4deg"],
     offsets: ["20px", "-12px", "4px"],
@@ -81,15 +81,16 @@ const STEPS = [
     description:
       "What begins as raw stone from nature becomes a living sculpture in your space — adding warmth, texture, character, and calm to everyday living.",
     images: [
-      "https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=500",
-      "https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=500",
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=500",
+      "./images/ourprocess/bringing-life-home.png",
+      "./images/ourprocess/bringing-life-home2.png",
+      "./images/ourprocess/bringing-life-home3.png",
     ],
     rotations: ["2deg", "-6deg", "4deg"],
     offsets: ["-16px", "8px", "-24px"],
     layout: "down",
   },
 ];
+
 
 // Your actual Vector_10.svg path — single horizontal line across all steps
 const VECTOR_PATH =
@@ -300,7 +301,12 @@ export default function OurProcess() {
                         style={{ rotate: step.rotations[0], translateY: step.offsets[0] }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={step.images[0]} alt="" className="h-full w-full object-cover" />
+                        <img src={step.images[0]} alt="" className="h-full w-full object-cover pb-3" />
+                        {/* <Image src={step.images[0]}
+                          alt=""
+                          width={100}
+                          height={100}
+                          className="h-full w-full object-cover pb-5" /> */}
                       </div>
 
                       {/* Center portrait */}
@@ -309,7 +315,12 @@ export default function OurProcess() {
                         style={{ rotate: step.rotations[1], translateY: step.offsets[1] }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={step.images[1]} alt="" className="h-full w-full object-cover" />
+                        <img src={step.images[1]} alt="" className="h-full w-full object-cover pb-3" />
+                        {/* <Image src={step.images[1]}
+                          alt=""
+                          width={100}
+                          height={100}
+                          className="h-full w-full object-cover pb-5" /> */}
                       </div>
 
                       {/* Right landscape photo */}
@@ -318,7 +329,7 @@ export default function OurProcess() {
                         style={{ rotate: step.rotations[2], translateY: step.offsets[2] }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={step.images[2]} alt="" className="h-full w-full object-cover" />
+                        <img src={step.images[2]} alt="" className="h-full w-full object-cover pb-3" />
                       </div>
                     </div>
 

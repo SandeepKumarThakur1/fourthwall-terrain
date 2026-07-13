@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
+    const [showHeader, setShowHeader] = useState(true);
 
     const links = [
         { name: "Home", href: "/" },
@@ -14,9 +15,34 @@ export default function Header() {
         { name: "Catalogue", href: "#" },
     ];
 
+    useEffect(() => {
+        let lastScrollY = window.scrollY;
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY < 50) {
+                setShowHeader(true);
+            } else if (currentScrollY > lastScrollY) {
+                setShowHeader(false);
+            } else {
+                setShowHeader(true);
+            }
+
+            lastScrollY = currentScrollY;
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
+
         <header
-            className="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md animate-in fade-in slide-in-from-top-5 duration-700"
+            className={`fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md
+  transition-transform duration-500
+  ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
         >
             <div className="mx-auto flex max-w-[90%] items-center justify-between py-5">
 

@@ -9,7 +9,7 @@ export default function GiftingSection() {
       <div className="text-center flex flex-col justify-between">
         <h3
           className="text-headline-1 leading-[110%]
-          text-[40px] sm:text-[80px] md:text-[130px]"
+          text-[40px] sm:text-[80px] md:text-[130px] text-white"
         >
           The art of gifting
           <br />

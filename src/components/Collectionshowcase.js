@@ -9,31 +9,31 @@ const COLLECTIONS = [
         name: "The River Residue",
         description:
             "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
-        image: "/images/demoProduct.png",
+        image: "/images/products/river-residue.png",
     },
     {
         name: "Canyon Crust",
         description:
             "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
-        image: "/images/demoProduct2.png",
+        image: "/images/products/canyon-crust.png",
     },
     {
         name: "Roselle Editions",
         description:
             "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
-        image: "/images/demoProduct3.png",
+        image: "/images/products/roselle-editions.png",
     },
     {
-        name: "The River Residue",
+        name: "Sand Dunes",
         description:
             "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
-        image: "/images/demoProduct.png",
+        image: "/images/products/sand-dunes.png",
     },
     {
-        name: "Canyon Crust",
+        name: "Fossil Frost",
         description:
             "Stone sourced from the right lands used and curated for inner peace and people with the eye of luxury.",
-        image: "/images/demoProduct2.png",
+        image: "/images/products/fossil-frost.png",
     },
 ];
 
@@ -106,7 +106,7 @@ export default function CollectionShowcase() {
 
                         <h2 className="text-[#634020] tracking-[-5%] leading-[100%] font-subheading
                             text-[34px] sm:text-[60px] md:text-[80px]">
-                            Designed to <br/>
+                            Designed to <br />
                             transform space
                         </h2>
 
@@ -123,7 +123,7 @@ export default function CollectionShowcase() {
 
                         <div
                             ref={trackRef}
-                            className="flex h-full items-center will-change-transform"
+                            className="flex h-full items-center will-change-transform gap-10"
                             style={{
                                 transform: `translateX(${translateX}px)`,
                                 transition: "transform 0.1s linear",
