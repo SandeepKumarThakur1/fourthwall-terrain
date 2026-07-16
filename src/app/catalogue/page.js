@@ -1,20 +1,32 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
-import Hero from "@/components/catalogue/Hero";
-import CategoryTabs from "@/components/catalogue/CategoryTabs";
-import FilterToggle from "@/components/catalogue/FilterToggle";
-import ProductGrid from "@/components/catalogue/ProductGrid";
-
-import products from "@/lib/products";
+import CategoryTabs from "@/components/catalogues/CategoryTabs";
+import CollectionBanner from "@/components/catalogues/CollectionBanner";
+import ProductGrid from "@/components/catalogues/ProductGrid";
+import Hero from "@/components/catalogues/Hero";
+import IndoorOutdoorToggle from "@/components/catalogues/IndoorOutdoor";
+import Pagination from "@/components/catalogues/Pagination";
+import products from "@/data/products.js";
 
 export default function CataloguePage() {
-    const [activeCategory, setActiveCategory] =
-        useState("All Products");
+    const [environment, setEnvironment] = useState("Indoor");
+    const [activeCategory, setActiveCategory] = useState("All Products");
+    const [page, setPage] = useState(1);
+    const productsPerPage = 9;
 
-    const [activeType, setActiveType] =
-        useState("All");
+    // const filteredProducts = useMemo(() => {
+    //     return products.filter((product) => {
+    //         const categoryMatch =
+    //             activeCategory === "All Products" ||
+    //             product.category === activeCategory;
+
+    //         const environmentMatch =
+    //             product.environment === environment;
+
+    //         return categoryMatch && environmentMatch;
+    //     });
+    // }, [activeCategory, environment]);
 
     const filteredProducts = useMemo(() => {
         return products.filter((product) => {
@@ -22,40 +34,67 @@ export default function CataloguePage() {
                 activeCategory === "All Products" ||
                 product.category === activeCategory;
 
-            const typeMatch =
-                activeType === "All" ||
-                product.type === activeType;
+            const environmentMatch =
+                product.environment === environment;
 
-            return categoryMatch && typeMatch;
+            return categoryMatch && environmentMatch;
         });
-    }, [activeCategory, activeType]);
+    }, [activeCategory, environment]);
+
+    const totalPages = Math.ceil(
+        filteredProducts.length / productsPerPage
+    );
+
+    const currentProducts = filteredProducts.slice(
+        (page - 1) * productsPerPage,
+        page * productsPerPage
+    );
 
     return (
-        <main className="min-h-screen bg-[#071B08]">
-            <Hero />
+        <>
+            <Hero category={activeCategory} />
 
-            <CategoryTabs
-                activeCategory={activeCategory}
-                setActiveCategory={setActiveCategory}
-            />
+            <CollectionBanner activeCategory={activeCategory}>
 
-            <FilterToggle
-                activeType={activeType}
-                setActiveType={setActiveType}
-            />
+                <CategoryTabs
+                    activeCategory={activeCategory}
+                    setActiveCategory={(category) => {
+                        setActiveCategory(category);
+                        setPage(1);
+                    }}
+                />
 
-            <ProductGrid products={filteredProducts} />
+                <div className="mx-auto max-w-[70%] py-16">
+                    <div className="flex items-center justify-between">
+                        <h2 className="text-5xl font-light">
+                            Our collection
+                        </h2>
 
-            {/* Temporary Debug */}
-            <div className="mx-auto max-w-7xl px-6 pb-20 text-white">
-                <p className="text-lg">
-                    Showing{" "}
-                    <span className="text-[#C9A46B] font-semibold">
-                        {filteredProducts.length}
-                    </span>{" "}
-                    products
-                </p>
-            </div>
-        </main>
+                        {/* <IndoorOutdoorToggle
+                            value={environment}
+                            onChange={setEnvironment}
+                        /> */}
+                        <IndoorOutdoorToggle
+                            value={environment}
+                            onChange={(value) => {
+                                setEnvironment(value);
+                                setPage(1);
+                            }}
+                        />
+                    </div>
+
+                    <ProductGrid products={currentProducts} />
+
+                    <div className="mt-16">
+                        <Pagination
+                            currentPage={page}
+                            totalPages={totalPages}
+                            onPageChange={setPage}
+                        />
+                    </div>
+                </div>
+
+            </CollectionBanner>
+        </>
     );
 }
