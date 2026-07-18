@@ -2,15 +2,26 @@
 
 const heroVideos = {
   "All Products": "/videos/all-products.mp4",
-  "River Residue": "/videos/river-residue.mp4",
-  "Canyon Crust": "/videos/canyon-crust.mp4",
-  "Roselle Editions": "/videos/roselle-editions.mp4",
-  "Sand Dunes": "/videos/sand-dunes.mp4",
-  "Fossil Frost": "/videos/fossil-frost.mp4",
+  "River Residue": "/videos/all-products.mp4",
+  "Concrete Finish": "/videos/all-products.mp4",
+  "Natural Stone": "/videos/all-products.mp4",
+  "Decorative Panels": "/videos/all-products.mp4",
 };
+
+// const heroVideos = {
+//   "All Products": "/videos/all-products.mp4",
+//   "River Residue": "/videos/river-residue.mp4",
+//   "Canyon Crust": "/videos/canyon-crust.mp4",
+//   "Roselle Editions": "/videos/roselle-editions.mp4",
+//   "Sand Dunes": "/videos/sand-dunes.mp4",
+//   "Fossil Frost": "/videos/fossil-frost.mp4",
+// };
 
 
 export default function Hero({ category }) {
+  const videoSrc =
+  heroVideos[category] || heroVideos["All Products"];
+
   return (
     <section className="relative h-[54vh] min-h-[500px] overflow-hidden">
       {/* Background Video */}

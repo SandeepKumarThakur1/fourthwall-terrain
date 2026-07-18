@@ -9,7 +9,7 @@ export default function IndoorOutdoorToggle({
     return (
         <div className="flex items-center gap-3">
             <span
-                className={`text-sm font-medium transition-colors ${isIndoor ? "text-black" : "text-gray-400"
+                className={`text-lg font-semibold transition-colors ${isIndoor ? "text-gray-400" : "text-white"
                     }`}
             >
                 Indoor
@@ -32,7 +32,7 @@ export default function IndoorOutdoorToggle({
             </button>
 
             <span
-                className={`text-sm font-medium transition-colors ${!isIndoor ? "text-black" : "text-gray-400"
+                className={`text-lg font-semibold transition-colors ${!isIndoor ? "text-gray-400" : "text-white"
                     }`}
             >
                 Outdoor

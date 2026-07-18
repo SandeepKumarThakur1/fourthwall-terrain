@@ -12,7 +12,7 @@ export default function Header() {
         { name: "Home", href: "/" },
         { name: "About Us", href: "/about" },
         { name: "Gifting", href: "/gifting" },
-        { name: "Catalogue", href: "#" },
+        { name: "Catalogue", href: "/catalogue" },
     ];
 
     useEffect(() => {

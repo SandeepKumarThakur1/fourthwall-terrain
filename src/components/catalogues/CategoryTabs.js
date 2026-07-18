@@ -1,11 +1,18 @@
 "use client";
 
+// const categories = [
+//   "All Products",
+//   "Stone Collection",
+//   "River Collection",
+//   "Granite Collection",
+//   "Natural Collection",
+// ];
 const categories = [
   "All Products",
-  "Stone Collection",
-  "River Collection",
-  "Granite Collection",
-  "Natural Collection",
+  "River Residue",
+  "Concrete Finish",
+  "Natural Stone",
+  "Decorative Panels",
 ];
 
 export default function CategoryTabs({
