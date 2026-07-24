@@ -1,13 +1,14 @@
 "use client";
 
-import HeroSection from "@/components/Hero";
-import CraftedInStone from "@/components/CraftedInStone";
-import CollectionShowcase from "@/components/Collectionshowcase";
-import GiftingSection from "@/components/GiftingSection";
-import TestimonialSection from "@/components/TestimonialSection";
-import FAQSection from "@/components/FAQSection";
-import OurProcess from "@/components/Ourprocess";
+import HeroSection from "@/components/home/Hero";
+import CraftedInStone from "@/components/home/CraftedInStone";
+import CollectionShowcase from "@/components/home/Collectionshowcase";
+import GiftingSection from "@/components/home/GiftingSection";
+import TestimonialSection from "@/components/home/TestimonialSection";
+import FAQSection from "@/components/home/FAQSection";
+// import OurProcess from "@/components/home/Ourprocess";
 import testimonials from "@/data/testimonial";
+import OurProcess from "@/components/ourProcess/OurProcess";
 
 export default function Home() {
   return (
@@ -17,9 +18,7 @@ export default function Home() {
       <OurProcess />
       <CollectionShowcase />
       <GiftingSection />
-
       <TestimonialSection testimonials={testimonials} />
-
       <FAQSection />
     </>
   );

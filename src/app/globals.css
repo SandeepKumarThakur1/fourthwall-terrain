@@ -98,7 +98,7 @@ body {
 }
 
 .btn-cta:hover {
-  background: linear-gradient(90deg, #082602, #638552);
+  background-position: right center;
 }
 
 .sectionBg {
@@ -122,21 +122,6 @@ body {
   min-height: 200vh; */
 }
 
-/* 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(calc(-50% - 16px));
-  }
-}
-
-.animate-marquee {
-  display: flex;
-  animation: marquee 30s linear infinite;
-} */
 
 .animate-marquee:hover {
   animation-play-state: paused;
@@ -155,7 +140,7 @@ body {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 25s linear infinite;
+  animation: marquee 65s linear infinite;
 }
 
 .ourprocessWrapper {

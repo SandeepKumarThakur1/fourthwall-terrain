@@ -302,11 +302,11 @@ export default function Footer() {
                                             <li key={link.label}>
                                                 <Link
                                                     href={link.href}
-                                                    className="text-white hover:text-white/80 group relative inline-flex transition-all duration-300"
+                                                    className="text-white hover:text-white/60 group relative inline-flex transition-all duration-300"
                                                 >
                                                     {link.label}
 
-                                                    <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-white/80 transition-transform duration-500 group-hover:scale-x-100"></span>
+                                                    {/* <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-white/80 transition-transform duration-500 group-hover:scale-x-100"></span> */}
 
                                                 </Link>
                                             </li>
@@ -327,9 +327,20 @@ export default function Footer() {
 
                         <Link
                             href="/"
-                            className="flex h-14 w-44 items-center justify-center bg-[#FFF9ED] text-[#062400] font-semibold uppercase tracking-[0.15em] transition-transform duration-300 hover:scale-105"
+                            className="flex h-14 w-44 items-center justify-start"
                         >
-                            Logo
+                        {/* <Link
+                            href="/"
+                            className="flex h-14 w-44 items-center justify-center bg-[#FFF9ED] text-[#062400] font-semibold uppercase tracking-[0.15em] transition-transform duration-300 hover:scale-105"
+                        > */}
+                            {/* Logo */}
+                            <Image
+                                src="/images/brand/logo-white.png"
+                                alt="brand"
+                                width={150}
+                                height={150}
+                                className=""
+                            />
                         </Link>
 
                         <div className="flex gap-8 text-sm">
@@ -490,7 +501,7 @@ export default function Footer() {
                     alt="Ghost Watermark"
                     width={1400}
                     height={120}
-                    className="w-full h-auto opacity-80 transition-all duration-700 hover:opacity-100 hover:-translate-y-2"
+                    className="w-full h-auto transition-all duration-700"
                 />
 
             </div>

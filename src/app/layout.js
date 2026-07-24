@@ -3,8 +3,8 @@
 import { usePathname } from "next/navigation";
 import { Manrope } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/layouts/Header";
+import Footer from "@/components/layouts/Footer";
 
 const manrope = Manrope({
   variable: "--font-body",
@@ -20,11 +20,37 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={manrope.variable}>
       <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
-        {!hideLayout && <Header />}
+        {/* Header */}
+        {pathname === "/contact-us" ? (
+          <>
+            {/* Mobile & Tablet */}
+            <div className="block lg:hidden">
+              <Header />
+            </div>
+
+            {/* Desktop */}
+            {/* Hidden */}
+          </>
+        ) : (
+          <Header />
+        )}
 
         {children}
 
-        {!hideLayout && <Footer />}
+        {/* Footer */}
+        {pathname === "/contact-us" ? (
+          <>
+            {/* Mobile & Tablet */}
+            <div className="block lg:hidden">
+              <Footer />
+            </div>
+
+            {/* Desktop */}
+            {/* Hidden */}
+          </>
+        ) : (
+          <Footer />
+        )}
       </body>
     </html>
   );

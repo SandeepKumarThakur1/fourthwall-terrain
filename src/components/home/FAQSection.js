@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { Plus, Minus, ChevronUp, ChevronDown } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -90,13 +90,9 @@ export default function FAQSection() {
       className="bg-[#F6F0E5] px-4 py-16 md:px-0 md:py-24"
     >
       <div className="mx-auto max-w-[90%]">
-
         <div className="grid gap-12 lg:grid-cols-2">
-
           {/* Left */}
-
-          <div className="lg:sticky lg:top-28 lg:self-start text-center lg:text-left">
-
+          <div className="text-center lg:sticky lg:top-28 lg:self-start lg:text-left">
             <h2 className="font-subheading text-[40px] leading-[100%] tracking-[-0.05em] text-[#634020] sm:text-[60px] md:text-[80px]">
               Queries answered
               <br />
@@ -109,48 +105,52 @@ export default function FAQSection() {
             >
               Ask a Question
             </Link>
-
           </div>
 
           {/* Right */}
-
           <div>
-
             {faqs.map((item, index) => (
               <div
                 key={item.question}
                 className="border-b border-[#E2D9CB]"
               >
-
                 <button
                   onClick={() =>
                     setActive(active === index ? -1 : index)
                   }
                   className="group flex w-full items-start justify-between gap-6 py-6 text-left"
                 >
-
+                  {/* Question */}
                   <span
-                    className={`text-[16px] leading-[150%] transition-all duration-300 md:text-[18px]
-                    ${active === index
-                        ? "text-[#697A07]"
-                        : "text-[#634020] group-hover:text-[#697A07]"
+                    className={`flex-1 text-[16px] leading-[150%] transition-all duration-300 md:text-[18px]
+                      ${
+                        active === index
+                          ? "font-medium text-[#634020]"
+                          : "text-[#634020] group-hover:text-[#634020]"
                       }`}
                   >
                     {item.question}
                   </span>
 
-                  <div
-                    ref={(el) => (iconRefs.current[index] = el)}
-                    className="shrink-0"
-                  >
-                    <ChevronDown
-                      size={20}
-                      className="transition-transform duration-300"
-                    />
-                  </div>
-
+{/* Chevron Icon */}
+<div
+  className={`flex h-9 w-9 shrink-0 items-center justify-center
+    transition-all duration-300
+    ${
+      active === index
+        ? "text-[#697A07]"
+        : "text-[#634020] group-hover:text-[#697A07]"
+    }`}
+>
+  {active === index ? (
+    <ChevronUp size={24} strokeWidth={2.2} />
+  ) : (
+    <ChevronDown size={24} strokeWidth={2.2} />
+  )}
+</div>
                 </button>
 
+                {/* Answer */}
                 <div
                   ref={(el) => (answerRefs.current[index] = el)}
                   style={{
@@ -159,20 +159,14 @@ export default function FAQSection() {
                     opacity: index === 0 ? 1 : 0,
                   }}
                 >
-
                   <p className="pb-6 text-[15px] leading-7 text-[#697A07] md:text-[17px]">
                     {item.answer}
                   </p>
-
                 </div>
-
               </div>
             ))}
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

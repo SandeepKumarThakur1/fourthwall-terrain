@@ -1,8 +1,8 @@
 "use client";
-
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
@@ -28,12 +28,9 @@ export default function Header() {
             } else {
                 setShowHeader(true);
             }
-
             lastScrollY = currentScrollY;
         };
-
         window.addEventListener("scroll", handleScroll);
-
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -41,17 +38,28 @@ export default function Header() {
 
         <header
             className={`fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md
-  transition-transform duration-500
-  ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
+            transition-transform duration-500
+            ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
         >
             <div className="mx-auto flex max-w-[90%] items-center justify-between py-5">
 
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="text-sm font-semibold uppercase tracking-[0.18em] text-[#412F23] transition-all duration-500 hover:opacity-70"
+                    className="text-sm font-semibold uppercase tracking-[0.18em] text-[#412F23]"
                 >
-                    Fourthwall Terrain
+                    {/* <Link
+                    href="/"
+                    className="text-sm font-semibold uppercase tracking-[0.18em] text-[#412F23] transition-all duration-500 hover:opacity-70"
+                > */}
+                    {/* Fourthwall Terrain */}
+                    <Image
+                        src="/images/brand/logo-dark.png"
+                        alt="brand"
+                        width={100}
+                        height={100}
+                        className=""
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}
