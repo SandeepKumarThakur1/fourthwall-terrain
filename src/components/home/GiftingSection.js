@@ -19,9 +19,9 @@ export default function GiftingSection() {
         <Image
           src="/images/giftImage.png"
           alt="giftImage"
-          width={900}
+          width={7500}
           height={1000}
-          className="mx-auto mt-[-40px] md:mt-[-130px] w-full max-w-[500px] md:max-w-[900px] h-auto"
+          className="mx-auto mt-[-40px] md:mt-[-130px] w-full max-w-[500px] md:max-w-[650px] h-auto"
         />
 
         <div className="text-center mt-6 md:mt-0">

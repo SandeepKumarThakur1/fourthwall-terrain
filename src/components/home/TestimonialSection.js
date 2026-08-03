@@ -14,7 +14,7 @@ export default function TestimonialSection({ testimonials }) {
         className="object-cover"
       />
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
         <div className="text-center">
           <h3 className="text-white text-[18px] md:text-[34px] font-subheading">
             Exclusive • Timeless • Authentic

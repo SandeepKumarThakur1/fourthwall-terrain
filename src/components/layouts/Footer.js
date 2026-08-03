@@ -302,7 +302,7 @@ export default function Footer() {
                                             <li key={link.label}>
                                                 <Link
                                                     href={link.href}
-                                                    className="text-white hover:text-white/60 group relative inline-flex transition-all duration-300"
+                                                    className="hover:text-white text-white/60 group relative inline-flex transition-all duration-300"
                                                 >
                                                     {link.label}
 

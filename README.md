@@ -1,36 +1,227 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fourthwall Terrain
 
-## Getting Started
+A modern, responsive website built using **Next.js 16**, **React 19**, and **Tailwind CSS 4**. The project delivers a fast, engaging, and visually appealing user experience with smooth animations, reusable components, and optimized performance.
 
-First, run the development server:
+---
+
+## 🌐 Live Demo
+
+🔗 **https://fourthwall-terrain.netlify.app/**
+
+---
+
+## 🚀 Tech Stack
+
+- **Framework:** Next.js 16
+- **Library:** React 19
+- **Styling:** Tailwind CSS 4
+- **Animations:** GSAP
+- **Slider:** Swiper.js
+- **Icons:** Lucide React
+- **Linting:** ESLint
+
+---
+
+## 📦 Prerequisites
+
+Before running the project, ensure you have:
+
+- Node.js 20.x or later
+- npm (or Yarn / pnpm)
+
+Check your versions:
+
+```bash
+node -v
+npm -v
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Navigate to the project folder:
+
+```bash
+cd fourthwall-terrain
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## 💻 Running the Development Server
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and visit:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The application will automatically reload whenever changes are made.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📜 Available Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Starts the development server |
+| `npm run build` | Creates a production build |
+| `npm run start` | Starts the production server |
+| `npm run lint` | Runs ESLint |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📁 Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+fourthwall-terrain/
+│
+├── public/                    # Static assets
+│
+├── src/
+│   ├── app/                   # Next.js App Router
+│   ├── components/            # Reusable UI Components
+│   └── data/                  # Static Data & Constants
+│
+├── .gitignore
+├── AGENTS.md
+├── CLAUDE.md
+├── eslint.config.mjs
+├── jsconfig.json
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+└── README.md
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📦 Dependencies
+
+### Production
+
+- Next.js `16.2.9`
+- React `19.2.4`
+- React DOM `19.2.4`
+- GSAP `3.15.0`
+- Swiper `14.0.5`
+- Lucide React `1.22.0`
+
+### Development
+
+- Tailwind CSS `4.x`
+- ESLint `9.x`
+- ESLint Config Next `16.2.9`
+- @tailwindcss/postcss `4.x`
+
+---
+
+## ✨ Features
+
+- ⚡ Built with Next.js App Router
+- 📱 Fully Responsive Layout
+- 🎨 Tailwind CSS 4
+- ✨ Smooth GSAP Animations
+- 🎠 Swiper Sliders
+- ♻️ Reusable Components
+- 🚀 Optimized Performance
+- 🔍 SEO Friendly
+- 🖼️ Optimized Images
+- 💡 Modern UI/UX
+
+---
+
+## 🏗️ Production Build
+
+Create an optimized production build:
+
+```bash
+npm run build
+```
+
+Start the production server:
+
+```bash
+npm run start
+```
+
+---
+
+## 🌍 Deployment
+
+The project is currently deployed on **Netlify**.
+
+Live URL:
+
+**https://fourthwall-terrain.netlify.app/**
+
+It can also be deployed on:
+
+- Vercel
+- Netlify
+- AWS
+- Render
+- DigitalOcean
+
+---
+
+## 🤝 Contributing
+
+1. Create a new branch.
+
+```bash
+git checkout -b feature/feature-name
+```
+
+2. Commit your changes.
+
+```bash
+git commit -m "Add new feature"
+```
+
+3. Push the branch.
+
+```bash
+git push origin feature/feature-name
+```
+
+4. Create a Pull Request.
+
+---
+
+## 👨‍💻 Developer
+
+**Sandeep Kumar Thakur**
+
+Frontend Developer
+
+---
+
+## 📄 License
+
+This project is private and intended for internal use only.
+
+---
+
+## 📞 Support
+
+If you encounter any issues or have suggestions, please open an issue in the repository or contact the project maintainer.

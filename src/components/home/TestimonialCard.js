@@ -8,23 +8,24 @@ export default function TestimonialCard({ item }) {
   const videoRef = useRef(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  // const [isMuted, setIsMuted] = useState(true);
 
   const playVideo = async () => {
     if (!videoRef.current) return;
 
     try {
+      videoRef.current.muted = false; // Auto Unmute
       await videoRef.current.play();
       setIsPlaying(true);
     } catch (err) {
       console.log(err);
     }
   };
-
   const pauseVideo = () => {
     if (!videoRef.current) return;
 
     videoRef.current.pause();
+    videoRef.current.muted = true; // Auto Mute
     setIsPlaying(false);
   };
 
@@ -40,14 +41,14 @@ export default function TestimonialCard({ item }) {
     }
   };
 
-  const toggleMute = (e) => {
-    e.stopPropagation();
+  // const toggleMute = (e) => {
+  //   e.stopPropagation();
 
-    if (!videoRef.current) return;
+  //   if (!videoRef.current) return;
 
-    videoRef.current.muted = !videoRef.current.muted;
-    setIsMuted(videoRef.current.muted);
-  };
+  //   videoRef.current.muted = !videoRef.current.muted;
+  //   setIsMuted(videoRef.current.muted);
+  // };
 
   const handleEnter = async () => {
     await playVideo();
@@ -58,9 +59,8 @@ export default function TestimonialCard({ item }) {
 
     videoRef.current.pause();
     videoRef.current.currentTime = 0;
+    videoRef.current.muted = true; // Auto Mute
     setIsPlaying(false);
-    videoRef.current.muted = true;
-    setIsMuted(true);
   };
 
   return (
@@ -106,7 +106,7 @@ export default function TestimonialCard({ item }) {
         </button>
 
         {/* Mute / Unmute */}
-        <button
+        {/* <button
           onClick={toggleMute}
           className="absolute right-4 top-4 flex h-11 w-11
           items-center justify-center rounded-full
@@ -115,7 +115,7 @@ export default function TestimonialCard({ item }) {
           transition-all duration-300 hover:scale-110 hover:bg-black/60"
         >
           {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-        </button>
+        </button> */}
       </div>
 
       {/* User Info */}

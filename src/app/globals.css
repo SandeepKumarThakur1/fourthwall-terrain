@@ -89,16 +89,16 @@ body {
   color: white;
   border: none;
   padding: 18px 30px;
-  transition: background 0.3s ease;
   font-weight: 800;
   font-size: 18px;
   letter-spacing: 12%;
   text-transform: uppercase;
   text-wrap: nowrap !important;
+  transition: 0.8s ease-in-out;
 }
 
 .btn-cta:hover {
-  background-position: right center;
+  background: linear-gradient(90deg, #638552 20%, #082602);
 }
 
 .sectionBg {
@@ -110,16 +110,11 @@ body {
   background: url('../../public/images/giftBg2.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; 
 }
 
 .testimonialWrapper {
   background: linear-gradient(69deg, #f3f2ed, #ccc8c3);
-  /* background: url('../../public/images/testimonialBg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 200vh; */
 }
 
 

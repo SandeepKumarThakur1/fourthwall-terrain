@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Plus, Minus, ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronUp, ChevronDown } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -46,7 +46,21 @@ export default function FAQSection() {
   const answerRefs = useRef([]);
   const iconRefs = useRef([]);
 
+  // useEffect(() => {
+  //   gsap.from(sectionRef.current, {
+  //     scrollTrigger: {
+  //       trigger: sectionRef.current,
+  //       start: "top 80%",
+  //     },
+  //     y: 80,
+  //     opacity: 0,
+  //     duration: 1,
+  //     ease: "power3.out",
+  //   });
+  // }, []);
+
   useEffect(() => {
+  const ctx = gsap.context(() => {
     gsap.from(sectionRef.current, {
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -57,7 +71,10 @@ export default function FAQSection() {
       duration: 1,
       ease: "power3.out",
     });
-  }, []);
+  }, sectionRef);
+
+  return () => ctx.revert();
+}, []);
 
   useEffect(() => {
     answerRefs.current.forEach((answer, index) => {
@@ -72,15 +89,15 @@ export default function FAQSection() {
         ease: "power2.out",
       });
 
-      if (iconRefs.current[index]) {
-        gsap.killTweensOf(iconRefs.current[index]);
+      // if (iconRefs.current[index]) {
+      //   gsap.killTweensOf(iconRefs.current[index]);
 
-        gsap.to(iconRefs.current[index], {
-          rotate: active === index ? 180 : 0,
-          duration: 0.35,
-          ease: "power2.out",
-        });
-      }
+      //   gsap.to(iconRefs.current[index], {
+      //     rotate: active === index ? 180 : 0,
+      //     duration: 0.35,
+      //     ease: "power2.out",
+      //   });
+      // }
     });
   }, [active]);
 
