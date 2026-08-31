@@ -24,14 +24,14 @@ export default function ContactPage() {
         <header className="flex items-center justify-between py-4 lg:py-5 hidden md:flex">
           <Link
             href="/"
-            className="text-[11px] sm:text-[12px] md:text-[14px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white"
+            className="text-[1vw] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white"
           >
             Fourthwall Terrain
           </Link>
 
           <Link
             href="/contact"
-            className="text-[11px] sm:text-[12px] md:text-[14px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white"
+            className="text-[1vw] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white"
           >
             Contact Us
           </Link>

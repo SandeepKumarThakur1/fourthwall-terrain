@@ -382,9 +382,15 @@ export default function Footer() {
 
                     <Link
                         href="/"
-                        className="flex h-14 w-44 items-center justify-center rounded-sm bg-[#FFF9ED] text-[#062400] font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105"
+                        className="flex h-14 w-44 items-center justify-center rounded-sm font-semibold uppercase tracking-[0.15em] transition-all duration-300 "
                     >
-                        Logo
+                        <Image
+                            src="/images/brand/logo-white.png"
+                            alt="brand"
+                            width={150}
+                            height={150}
+                            className=""
+                        />
                     </Link>
 
                 </div>
@@ -501,7 +507,7 @@ export default function Footer() {
                     alt="Ghost Watermark"
                     width={1400}
                     height={120}
-                    className="w-full h-auto transition-all duration-700"
+                    className="w-full h-20vw transition-all duration-700"
                 />
 
             </div>

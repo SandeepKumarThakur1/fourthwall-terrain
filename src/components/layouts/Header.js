@@ -41,7 +41,7 @@ export default function Header() {
             transition-transform duration-500
             ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
         >
-            <div className="mx-auto flex max-w-[90%] items-center justify-between py-5">
+            <div className="mx-auto flex max-w-[90%] items-center justify-between py-3 md:py-5">
 
                 {/* Logo */}
                 <Link
