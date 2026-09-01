@@ -58,11 +58,11 @@ export default function HeroSection() {
       >
         <h1
           className="text-headline-1 text-white leading-[100%]
-          text-[11vw]"
+          text-[11vw] z-50 relative"
         >
           Bringing life
           <br />
-          <span className="pl-[10px] md:pl-[40px]">into your space</span>
+          <span className="pl-[10px] md:pl-[40px] leading-0.5">into your space</span>
         </h1>
       </div>
 
@@ -78,21 +78,21 @@ export default function HeroSection() {
         </Link>
       </div>
 
-      <Image
+      {/* <Image
         src="/images/terrainEdge.svg"
         alt="Jagged terrain edge"
         width={1440}
         height={120}
         className="terrain-edge w-full h-auto z-2"
-      />
+      /> */}
 
-      {/* <Image
+      <Image
         src="/images/mountainHero.png"
         alt="Mountain hero"
         width={1500}
         height={1500}
         className="z-1 absolute bottom-0 right-0 w-full h-[140vw] md:h-[85vw] object-cover"
-      /> */}
+      />
     </section>
   );
 }

@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -7,6 +8,7 @@ import Image from "next/image";
 export default function Header() {
     const [open, setOpen] = useState(false);
     const [showHeader, setShowHeader] = useState(true);
+    const [scrolledPastHero, setScrolledPastHero] = useState(false);
 
     const links = [
         { name: "Home", href: "/" },
@@ -21,6 +23,10 @@ export default function Header() {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
+            // Apply background only after first 100vh
+            setScrolledPastHero(currentScrollY >= window.innerHeight);
+
+            // Header show / hide
             if (currentScrollY < 50) {
                 setShowHeader(true);
             } else if (currentScrollY > lastScrollY) {
@@ -28,18 +34,36 @@ export default function Header() {
             } else {
                 setShowHeader(true);
             }
+
             lastScrollY = currentScrollY;
         };
+
+        // Set initial state
+        handleScroll();
+
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
     return (
-
         <header
-            className={`fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md
-            transition-transform duration-500
-            ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
+            className={`
+                fixed top-0 left-0 z-50 w-full
+                transition-all duration-500
+                ${
+                    scrolledPastHero
+                        ? "bg-white/10 backdrop-blur-md"
+                        : "bg-transparent backdrop-blur-0"
+                }
+                ${
+                    showHeader
+                        ? "translate-y-0"
+                        : "-translate-y-full"
+                }
+            `}
         >
             <div className="mx-auto flex max-w-[90%] items-center justify-between py-3 md:py-5">
 
@@ -48,17 +72,11 @@ export default function Header() {
                     href="/"
                     className="text-sm font-semibold uppercase tracking-[0.18em] text-[#412F23]"
                 >
-                    {/* <Link
-                    href="/"
-                    className="text-sm font-semibold uppercase tracking-[0.18em] text-[#412F23] transition-all duration-500 hover:opacity-70"
-                > */}
-                    {/* Fourthwall Terrain */}
                     <Image
                         src="/images/brand/logo-dark.png"
                         alt="brand"
                         width={100}
                         height={100}
-                        className=""
                     />
                 </Link>
 
@@ -75,7 +93,7 @@ export default function Header() {
                         >
                             {item.name}
 
-                            <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#412F23] transition-transform duration-500 group-hover:scale-x-100"></span>
+                            <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#412F23] transition-transform duration-500 group-hover:scale-x-100" />
                         </Link>
                     ))}
                 </nav>
@@ -87,7 +105,7 @@ export default function Header() {
                 >
                     Contact Us
 
-                    <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#412F23] transition-transform duration-500 group-hover:scale-x-100"></span>
+                    <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#412F23] transition-transform duration-500 group-hover:scale-x-100" />
                 </Link>
 
                 {/* Mobile Button */}
@@ -95,17 +113,26 @@ export default function Header() {
                     onClick={() => setOpen(true)}
                     className="transition-transform duration-300 hover:scale-110 md:hidden"
                 >
-                    <Menu className="text-[#412F23]" size={24} />
+                    <Menu
+                        className="text-[#412F23]"
+                        size={24}
+                    />
                 </button>
             </div>
 
             {/* Mobile Menu */}
             <div
-                className={`min-h-screen fixed inset-0 z-[100] bg-[#FFF9ED] transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]
-                ${open
-                        ? "translate-x-0 opacity-100"
-                        : "translate-x-full opacity-0 pointer-events-none"
-                    }`}
+                className={`
+                    min-h-screen fixed inset-0 z-[100]
+                    bg-[#FFF9ED]
+                    transition-all duration-700
+                    ease-[cubic-bezier(.22,1,.36,1)]
+                    ${
+                        open
+                            ? "translate-x-0 opacity-100"
+                            : "translate-x-full opacity-0 pointer-events-none"
+                    }
+                `}
             >
                 {/* Close */}
                 <div className="flex justify-end p-6">
@@ -113,32 +140,43 @@ export default function Header() {
                         onClick={() => setOpen(false)}
                         className="transition-transform duration-300 hover:rotate-90"
                     >
-                        <X size={28} className="text-[#412F23]" />
+                        <X
+                            size={28}
+                            className="text-[#412F23]"
+                        />
                     </button>
                 </div>
 
                 {/* Links */}
                 <div className="flex flex-col gap-8 px-8 pt-10">
-                    {[...links, { name: "Contact Us", href: "/contact-us" }].map(
-                        (item, index) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                onClick={() => setOpen(false)}
-                                className={`text-3xl font-semibold uppercase text-[#412F23]
+                    {[
+                        ...links,
+                        {
+                            name: "Contact Us",
+                            href: "/contact-us",
+                        },
+                    ].map((item, index) => (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                            className={`
+                                text-3xl font-semibold uppercase
+                                text-[#412F23]
                                 transition-all duration-700
-                                ${open
+                                ${
+                                    open
                                         ? "translate-x-0 opacity-100"
                                         : "translate-x-10 opacity-0"
-                                    }`}
-                                style={{
-                                    transitionDelay: `${index * 80}ms`,
-                                }}
-                            >
-                                {item.name}
-                            </Link>
-                        )
-                    )}
+                                }
+                            `}
+                            style={{
+                                transitionDelay: `${index * 80}ms`,
+                            }}
+                        >
+                            {item.name}
+                        </Link>
+                    ))}
                 </div>
             </div>
         </header>

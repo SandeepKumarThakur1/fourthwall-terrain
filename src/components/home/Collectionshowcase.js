@@ -165,8 +165,27 @@ export default function CollectionShowcase() {
           </div>
 
           {/* RIGHT */}
+          {/* <div
+            className="
+            relative
+            overflow-hidden
+            before:absolute
+            before:left-0
+            before:top-0
+            before:z-10
+            before:h-full
+            before:w-[140px]
+            before:pointer-events-none
+            before:bg-gradient-to-r
+            before:from-[#FFFAF0]
+            before:via-[#FFFAF0]/80
+            before:to-transparent
+          "
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          > */}
           <div
-            className="relative overflow-hidden"
+            className="productsSide relative overflow-hidden"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >

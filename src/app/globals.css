@@ -1,181 +1,739 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
 
-  /* Brand fonts */
-  --font-heading: var(--font-heading);
-  --font-body: var(--font-body);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+
+    /* Brand fonts */
+    --font-heading: var(--font-heading);
+    --font-body: var(--font-body);
 }
+
+/* =========================================================
+   ROOT
+========================================================= */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-heading: "Cranio", system-ui, -apple-system, sans-serif;
-  --font-subheading: "Lausanne-Regular", system-ui, -apple-system, sans-serif;
-  --font-body: "Manrope", system-ui, -apple-system, sans-serif;
+    --background: #ffffff;
+    --foreground: #171717;
+
+    --font-heading: "Cranio", system-ui, -apple-system, sans-serif;
+    --font-subheading: "Lausanne-Regular", system-ui, -apple-system, sans-serif;
+    --font-body: "Manrope", system-ui, -apple-system, sans-serif;
 }
 
-::selection {
-  background-color: #638552 !important;
-  color: #ededed !important;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================================================
+   FONT FACE
+========================================================= */
+
+@font-face {
+    font-family: "Cranio";
+    src: url("/fonts/cranio.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Cranio";
-  src:
-    url("/fonts/cranio.otf") format("opentype"),
-    url("/fonts/cranio-oblique.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Cranio";
+    src: url("/fonts/cranio-oblique.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Lausanne-Regular";
-  src:
-    url("/fonts/Lausanne-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Lausanne-Regular";
+    src: url("/fonts/Lausanne-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  background: #fff !important;
-  color: var(--foreground);
-  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  /* font-size: 1vw; */
+    margin: 0;
+
+    background: #fff !important;
+    color: var(--foreground);
+
+    font-family:
+        var(--font-body),
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: 16px;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-/* Headline 1 | Lausanne | 90pt -> 64pt | tracking -4% | line-height 150% */
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+    background-color: #638552 !important;
+    color: #ededed !important;
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
 .text-headline-1 {
-  font-family: var(--font-heading);
-  font-weight: 400;
-  /* font-size: 130px; */
-  letter-spacing: 0;
-  line-height: 100%;
+    font-family: var(--font-heading);
+
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 100%;
 }
 
 .font-subheading {
-  font-family: var(--font-subheading);
-  font-weight: 400;
-  line-height: 100%;
-}
+    font-family: var(--font-subheading);
 
-/* Jagged terrain edge — signature element used at hero/section transitions */
-.terrain-edge {
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* button linear gradient */
-.btn-cta {
-  background: linear-gradient(90deg, #638552, #082602);
-  color: white;
-  border: none;
-  padding: 18px 30px;
-  font-weight: 800;
-  /* font-size: 1.5vw; */
-  font-size: 18px;
-  letter-spacing: 12%;
-  text-transform: uppercase;
-  text-wrap: nowrap !important;
-  transition: 0.8s ease-in-out;
-}
-
-.btn-cta:hover {
-  background: linear-gradient(90deg, #638552 20%, #082602);
-}
-
-.sectionBg {
-  background: linear-gradient(#FFF9ED, #FFFFFF);
-  color: #0a0a0a;
-}
-
-.giftingWrapper {
-  background: url('../../public/images/giftBg2.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.testimonialWrapper {
-  background: linear-gradient(69deg, #f3f2ed, #ccc8c3);
+    font-weight: 400;
+    line-height: 100%;
 }
 
 
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
+/* =========================================================
+   SCROLLBAR HIDE
+========================================================= */
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 65s linear infinite;
-}
-
-.ourprocessWrapper {
-  background: url('../../public/images/processBg.png');
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Hide scrollbar */
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
+
+
+/* =========================================================
+   SECTION BACKGROUND
+========================================================= */
+
+.sectionBg {
+    background: linear-gradient(
+        to bottom,
+        #fff9ed 0%,
+        #ffffff 100%
+    );
+
+    color: #0a0a0a;
+}
+
+
+/* =========================================================
+   CRAFTED IN STONE
+========================================================= */
 
 .craftedBg {
-  position: relative;
-  background: #FFF9ED;
-  background-image:
-    repeating-linear-gradient(to right,
-      rgba(99, 64, 32, 0.07) 0,
-      rgba(99, 64, 32, 0.07) 1px,
-      transparent 1px,
-      transparent 80px),
-    repeating-linear-gradient(to bottom,
-      rgba(99, 64, 32, 0.07) 0,
-      rgba(99, 64, 32, 0.07) 1px,
-      transparent 1px,
-      transparent 70px);
+    position: absolute;
+    top: -10vw;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+        repeating-linear-gradient(
+            to right,
+            rgba(99, 64, 32, 0.07) 0,
+            rgba(99, 64, 32, 0.07) 1px,
+            transparent 1px,
+            transparent 80px
+        ),
+        repeating-linear-gradient(
+            to bottom,
+            rgba(99, 64, 32, 0.07) 0,
+            rgba(99, 64, 32, 0.07) 1px,
+            transparent 1px,
+            transparent 70px
+        );
 }
 
-@media (max-width: 768px) {
-  .btn-cta {
-    padding: 12px 20px;
-    font-size: 12px;
-  }
+.terrain-edge {
+    position: absolute;
+
+    top: -10vw;
+    left: 0;
+
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   GIFTING SECTION
+========================================================= */
+
+.giftingWrapper {
+    background-image: url("/images/giftBg2.png");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* =========================================================
+   TESTIMONIAL
+========================================================= */
+
+.testimonialWrapper {
+    background: linear-gradient(
+        69deg,
+        #f3f2ed,
+        #ccc8c3
+    );
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    display: flex;
+
+    width: max-content;
+
+    animation:
+        marquee 65s linear infinite;
+
+    will-change: transform;
+}
+
+
+/* =========================================================
+   OUR PROCESS
+========================================================= */
+
+.ourprocessWrapper {
+    background-image: url("/images/processBg.png");
+
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* =========================================================
+   PREMIUM CTA BUTTON
+========================================================= */
+
+.btn-cta {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 56px;
+
+    overflow: hidden;
+
+    padding: 18px 30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #638552 0%,
+            #082602 100%
+        );
+
+    color: #ffffff;
+
+    border: none;
+
+    font-family: var(--font-body);
+
+    font-size: 18px;
+    font-weight: 800;
+
+    line-height: 1;
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+    text-wrap: nowrap;
+
+    cursor: pointer;
+
+    transform: translateZ(0);
+
+    transition:
+        transform 0.5s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 0.5s ease,
+        background 0.5s ease;
+}
+
+
+/* =========================================================
+   CTA SHIMMER
+========================================================= */
+
+.btn-cta::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            100deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.08) 35%,
+            rgba(255, 255, 255, 0.45) 50%,
+            rgba(255, 255, 255, 0.08) 65%,
+            transparent 100%
+        );
+
+    transform: skewX(-20deg);
+
+    pointer-events: none;
+
+    transition:
+        left 0.8s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================================
+   CTA CONTENT
+========================================================= */
+
+.btn-cta span {
+    position: relative;
+
+    z-index: 2;
+
+    transition:
+        transform 0.5s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================================
+   CTA HOVER
+========================================================= */
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #729b60 0%,
+            #0d3509 100%
+        );
+
+    box-shadow:
+        0 12px 30px rgba(8, 38, 2, 0.22);
+}
+
+.btn-cta:hover::before {
+    left: 140%;
+}
+
+.btn-cta:hover span {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   CTA ACTIVE
+========================================================= */
+
+.btn-cta:active {
+    transform: translateY(0) scale(0.97);
+
+    box-shadow:
+        0 5px 15px rgba(8, 38, 2, 0.18);
+}
+
+
+/* =========================================================
+   CTA FOCUS
+========================================================= */
+
+.btn-cta:focus-visible {
+    outline: 2px solid #638552;
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    .craftedBg {
+        top: -7vw;
+
+        background-image:
+            repeating-linear-gradient(
+                to right,
+                rgba(99, 64, 32, 0.07) 0,
+                rgba(99, 64, 32, 0.07) 1px,
+                transparent 1px,
+                transparent 60px
+            ),
+            repeating-linear-gradient(
+                to bottom,
+                rgba(99, 64, 32, 0.07) 0,
+                rgba(99, 64, 32, 0.07) 1px,
+                transparent 1px,
+                transparent 60px
+            );
+    }
+
+    .terrain-edge {
+        top: -7vw;
+    }
+
+    .btn-cta {
+        min-height: 52px;
+
+        padding: 16px 26px;
+
+        font-size: 16px;
+        letter-spacing: 0.10em;
+    }
+
+    .animate-marquee {
+        animation-duration: 55s;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-size: 14px;
+        overflow-x: hidden;
+    }
+
+
+    /* -----------------------------------------
+       HEADLINE
+    ----------------------------------------- */
+
+    .text-headline-1 {
+        font-size: clamp(
+            42px,
+            11vw,
+            72px
+        );
+
+        line-height: 0.95;
+    }
+
+    .font-subheading {
+        font-size: clamp(
+            24px,
+            7vw,
+            44px
+        );
+
+        line-height: 1;
+    }
+
+
+    /* -----------------------------------------
+       CRAFTED BACKGROUND
+    ----------------------------------------- */
+
+    .craftedBg {
+        top: -12vw;
+
+        width: 100%;
+        height: 110%;
+
+        background-image:
+            repeating-linear-gradient(
+                to right,
+                rgba(99, 64, 32, 0.07) 0,
+                rgba(99, 64, 32, 0.07) 1px,
+                transparent 1px,
+                transparent 40px
+            ),
+            repeating-linear-gradient(
+                to bottom,
+                rgba(99, 64, 32, 0.07) 0,
+                rgba(99, 64, 32, 0.07) 1px,
+                transparent 1px,
+                transparent 40px
+            );
+    }
+
+    .terrain-edge {
+        top: -12vw;
+        width: 100%;
+    }
+
+
+    /* -----------------------------------------
+       GIFTING
+    ----------------------------------------- */
+
+    .giftingWrapper {
+        background-position: center;
+        background-size: cover;
+    }
+
+
+    /* -----------------------------------------
+       TESTIMONIAL
+    ----------------------------------------- */
+
+    .testimonialWrapper {
+        background:
+            linear-gradient(
+                69deg,
+                #f3f2ed,
+                #ccc8c3
+            );
+    }
+
+    .animate-marquee {
+        animation-duration: 45s;
+    }
+
+
+    /* -----------------------------------------
+       CTA
+    ----------------------------------------- */
+
+    .btn-cta {
+        min-height: 46px;
+
+        padding: 13px 20px;
+
+        font-size: 12px;
+
+        letter-spacing: 0.10em;
+
+        max-width: 100%;
+    }
+
+    .btn-cta:hover {
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 8px 20px rgba(8, 38, 2, 0.18);
+    }
+
+    .btn-cta:hover span {
+        transform: translateX(2px);
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .text-headline-1 {
+        font-size: clamp(
+            36px,
+            12vw,
+            54px
+        );
+    }
+
+    .font-subheading {
+        font-size: clamp(
+            22px,
+            7vw,
+            34px
+        );
+    }
+
+    .craftedBg {
+        top: -10vw;
+
+        background-image:
+            repeating-linear-gradient(
+                to right,
+                rgba(99, 64, 32, 0.065) 0,
+                rgba(99, 64, 32, 0.065) 1px,
+                transparent 1px,
+                transparent 32px
+            ),
+            repeating-linear-gradient(
+                to bottom,
+                rgba(99, 64, 32, 0.065) 0,
+                rgba(99, 64, 32, 0.065) 1px,
+                transparent 1px,
+                transparent 32px
+            );
+    }
+
+    .terrain-edge {
+        top: -10vw;
+    }
+
+    .btn-cta {
+        min-height: 44px;
+
+        padding: 12px 17px;
+
+        font-size: 11px;
+
+        letter-spacing: 0.08em;
+    }
+
+    .animate-marquee {
+        animation-duration: 38s;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .btn-cta {
+        padding: 11px 15px;
+
+        font-size: 10px;
+
+        letter-spacing: 0.07em;
+    }
+
+    .craftedBg {
+        background-image:
+            repeating-linear-gradient(
+                to right,
+                rgba(99, 64, 32, 0.06) 0,
+                rgba(99, 64, 32, 0.06) 1px,
+                transparent 1px,
+                transparent 28px
+            ),
+            repeating-linear-gradient(
+                to bottom,
+                rgba(99, 64, 32, 0.06) 0,
+                rgba(99, 64, 32, 0.06) 1px,
+                transparent 1px,
+                transparent 28px
+            );
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   Disable hover-only effects where hover doesn't exist.
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .btn-cta::before {
+        display: none;
+    }
+
+    .btn-cta:hover {
+        transform: none;
+
+        box-shadow: none;
+
+        background:
+            linear-gradient(
+                90deg,
+                #638552 0%,
+                #082602 100%
+            );
+    }
+
+    .btn-cta:hover span {
+        transform: none;
+    }
+
+    .animate-marquee:hover {
+        animation-play-state: running;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .animate-marquee {
+        animation: none;
+        transform: none;
+    }
 }

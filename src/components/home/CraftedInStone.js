@@ -252,9 +252,20 @@ export default function CraftedInStone() {
     <section
       id="about"
       data-header="light"
-      className="relative text-center sectionBg craftedBg mt-[-3%] md:mt-[-5%] px-4 md:px-0 z-4 overflow-hidden md:min-h-screen md:flex md:flex-col md:justify-center"
+      className="relative text-center sectionBg mt-[-3%] md:mt-[-5%] px-4 md:px-0 z-4 md:min-h-screen md:flex md:flex-col md:justify-center"
     >
-      <div>
+      <div className="craftedBg"></div>
+
+      <div className="terrain-edge">
+        <Image
+          src="/images/terrainEdge.svg"
+          alt="Jagged terrain edge"
+          width={1440}
+          height={120}
+          className="w-full h-auto z-2"
+        /></div>
+
+      <div className="relative z-10">
         <h3
           className="text-[#634020] tracking-[-5%] mb-0 leading-[100%] font-subheading
           text-[7vw] h-auto"
@@ -281,7 +292,7 @@ export default function CraftedInStone() {
         </p>
       </div>
 
-      <div className="mapwrapperImage relative mt-[-8%] md:mt-[-15%] text-center mb-[-30%] origin-center">
+      <div className="mapwrapperImage relative mt-[-8%] md:mt-[-15%] text-center mb-[-30%] origin-center z-20">
         <Image
           src="/images/map.png"
           alt="map"
