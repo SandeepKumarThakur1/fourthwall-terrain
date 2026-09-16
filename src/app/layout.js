@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 
@@ -15,42 +16,40 @@ const manrope = Manrope({
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
-  const hideLayout = pathname === "/contact-us";
+  const isHomePage = pathname === "/";
+  const isContactPage = pathname === "/contact-us";
+  const isCataloguePage = pathname === "/catalogue";
 
   return (
     <html lang="en" className={manrope.variable}>
-      <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
+      <body className="min-h-screen flex flex-col">
         {/* Header */}
-        {pathname === "/contact-us" ? (
-          <>
-            {/* Mobile & Tablet */}
-            <div className="block lg:hidden">
-              <Header />
-            </div>
-
-            {/* Desktop */}
-            {/* Hidden */}
-          </>
+        {isContactPage ? (
+          // Contact page: Header only on mobile/tablet
+          <div className="block lg:hidden">
+            <Header isHomePage={isHomePage} />
+          </div>
         ) : (
-          <Header />
+          // All other pages including Catalogue
+          <Header isHomePage={isHomePage} />
         )}
 
-        {children}
+        {/* Main Content */}
+        <main className="flex-1">
+          {children}
+        </main>
 
         {/* Footer */}
-        {pathname === "/contact-us" ? (
-          <>
-            {/* Mobile & Tablet */}
+        {!isCataloguePage &&
+          (isContactPage ? (
+            // Contact page: Footer only on mobile/tablet
             <div className="block lg:hidden">
               <Footer />
             </div>
-
-            {/* Desktop */}
-            {/* Hidden */}
-          </>
-        ) : (
-          <Footer />
-        )}
+          ) : (
+            // All other pages
+            <Footer />
+          ))}
       </body>
     </html>
   );

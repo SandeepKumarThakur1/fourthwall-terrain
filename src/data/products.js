@@ -8,7 +8,7 @@ const products = [
     environment: "Indoor",
     description:
       "Premium stone-inspired finish for luxurious indoor walls and modern interiors.",
-    price: "₹1,150 / sqm",
+    price: "Rs. 1,150",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -23,7 +23,7 @@ const products = [
     environment: "Outdoor",
     description:
       "Weather-resistant stone texture finish for facades and outdoor architectural walls.",
-    price: "₹1,250 / sqm",
+    price: "Rs. 1,250",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -40,7 +40,7 @@ const products = [
     environment: "Indoor",
     description:
       "Natural river-inspired finish designed for elegant interior applications.",
-    price: "₹1,300 / sqm",
+    price: "Rs. 1,300",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -55,7 +55,7 @@ const products = [
     environment: "Outdoor",
     description:
       "Durable river residue finish ideal for exterior walls and landscape projects.",
-    price: "₹1,450 / sqm",
+    price: "Rs. 1,450",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -72,7 +72,7 @@ const products = [
     environment: "Indoor",
     description:
       "Luxury granite-inspired surface for premium residential interiors.",
-    price: "₹1,650 / sqm",
+    price: "Rs. 1,650",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -87,7 +87,7 @@ const products = [
     environment: "Outdoor",
     description:
       "High-strength granite coating engineered for exterior architectural applications.",
-    price: "₹1,750 / sqm",
+    price: "Rs. 1,750",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -104,7 +104,7 @@ const products = [
     environment: "Indoor",
     description:
       "Smooth natural finish that creates warm and elegant living spaces.",
-    price: "₹1,250 / sqm",
+    price: "Rs. 1,250",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -119,7 +119,7 @@ const products = [
     environment: "Outdoor",
     description:
       "Natural textured coating with superior weather resistance for exterior walls.",
-    price: "₹1,350 / sqm",
+    price: "Rs. 1,350",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -136,7 +136,7 @@ const products = [
     environment: "Indoor",
     description:
       "Premium decorative stone finish crafted for sophisticated interiors.",
-    price: "₹1,450 / sqm",
+    price: "Rs. 1,450",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -151,7 +151,7 @@ const products = [
     environment: "Outdoor",
     description:
       "Elegant exterior finish inspired by naturally flowing river textures.",
-    price: "₹1,600 / sqm",
+    price: "Rs. 1,600",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -166,7 +166,7 @@ const products = [
     environment: "Indoor",
     description:
       "Refined granite texture offering a premium finish for modern interiors.",
-    price: "₹1,850 / sqm",
+    price: "Rs. 1,850",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -181,7 +181,7 @@ const products = [
     environment: "Outdoor",
     description:
       "Natural stone coating providing long-lasting protection and aesthetic appeal.",
-    price: "₹1,550 / sqm",
+    price: "Rs. 1,550",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -195,7 +195,7 @@ const products = [
     category: "Natural Stone",
     environment: "Indoor",
     description: "Elegant stone finish for contemporary interiors.",
-    price: "₹1,350 / sqm",
+    price: "Rs. 1,350",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -209,7 +209,7 @@ const products = [
     category: "Natural Stone",
     environment: "Outdoor",
     description: "Premium exterior stone coating.",
-    price: "₹1,450 / sqm",
+    price: "Rs. 1,450",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",
@@ -223,7 +223,7 @@ const products = [
     category: "Natural Stone",
     environment: "Indoor",
     description: "Luxury decorative stone texture.",
-    price: "₹1,550 / sqm",
+    price: "Rs. 1,550",
     images: [
       "/images/products/product1.png",
       "/images/products/product1.png",

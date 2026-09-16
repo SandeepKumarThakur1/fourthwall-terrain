@@ -37,7 +37,6 @@
 //         const start = (page - 1) * productsPerPage;
 //         return filteredProducts.slice(start, start + productsPerPage);
 //     }, [filteredProducts, page]);
-
 //     return (
 //         <>
 //             <Hero category={activeCategory} />
@@ -83,7 +82,7 @@
 
 
 
-
+// New version without pagination
 "use client";
 
 import { useMemo, useState } from "react";
@@ -100,12 +99,10 @@ export default function CataloguePage() {
 
     const filteredProducts = useMemo(() => {
         return products.filter((product) => {
-            // Show all products when "All Products" is selected
             if (activeCategory === "All Products") {
                 return true;
             }
 
-            // Filter by category + environment
             return (
                 product.category === activeCategory &&
                 product.environment === environment
@@ -116,7 +113,6 @@ export default function CataloguePage() {
     return (
         <>
             <Hero category={activeCategory} />
-
             <CollectionBanner activeCategory={activeCategory}>
                 <CategoryTabs
                     activeCategory={activeCategory}
@@ -125,8 +121,8 @@ export default function CataloguePage() {
 
                 <div className="mx-auto max-w-[70%] py-16">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-5xl font-light">
-                            Our Collection
+                        <h2 className="text-[44px] leading-[150%] tracking-[-4%] text-white font-subheading">
+                            Our collection
                         </h2>
 
                         <IndoorOutdoorToggle

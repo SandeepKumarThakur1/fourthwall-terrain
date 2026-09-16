@@ -8,11 +8,11 @@
 //   "Natural Collection",
 // ];
 const categories = [
-  "All Products",
-  "River Residue",
-  "Concrete Finish",
-  "Natural Stone",
-  "Decorative Panels",
+    "All Products",
+    "River Residue",
+    "Concrete Finish",
+    "Natural Stone",
+    "Decorative Panels",
 ];
 
 export default function CategoryTabs({
@@ -32,7 +32,7 @@ export default function CategoryTabs({
                                 onClick={() => setActiveCategory(category)}
                                 className={`font-subheading transition-all duration-300 cursor-pointer font-[400] text-[24px] tracking-[-4%] leading-[150%] ${isActive
                                     ? "text-white"
-                                    : "text-white/60"
+                                    : "text-white/50"
                                     }`}
                             >
                                 {category}

@@ -251,16 +251,16 @@ export default function ProductCard({ product }) {
         </div>
 
         <div className="py-5">
-          <h3 className="text-xl font-semibold">
+          <h3 className="font-subheading text-white text-[24px] leading-[150%] tracking-[-4%] font-[400]">
             {product.title}
           </h3>
 
-          <p className="mt-3 line-clamp-2 text-sm text-white/80">
+          <p className="mt-3 line-clamp-2 font-body text-white/60 text-[16px] leading-[150%] tracking-[-4%] font-[500]">
             {product.description}
           </p>
 
-          <div className="mt-5 flex items-center justify-between">
-            <span className="text-lg font-semibold">
+          <div className="mt-4 flex items-center justify-between">
+            <span className="font-subheading text-white text-[18px] leading-[150%] tracking-[-4%] font-[600]">
               {product.price}
             </span>
           </div>

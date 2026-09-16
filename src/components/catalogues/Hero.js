@@ -20,7 +20,7 @@ const heroVideos = {
 
 export default function Hero({ category }) {
   const videoSrc =
-  heroVideos[category] || heroVideos["All Products"];
+    heroVideos[category] || heroVideos["All Products"];
 
   return (
     <section className="relative h-[54vh] min-h-[500px] overflow-hidden">
@@ -34,14 +34,11 @@ export default function Hero({ category }) {
         preload="auto"
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src={heroVideos[category]} type="video/mp4" />
+        <source src={videoSrc} type="video/mp4" />
       </video>
 
-      {/* Overlay */}
-      {/* <div className="absolute inset-0 bg-black/35" /> */}
-
-      {/* Optional Gradient */}
-      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" /> */}
+      {/* Top Black Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-transparent" />
 
       {/* Content */}
       {/* <div className="relative z-10 mx-auto flex h-full max-w-7xl items-end px-6 pb-16">

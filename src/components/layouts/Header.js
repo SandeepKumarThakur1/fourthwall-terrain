@@ -1,21 +1,32 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
-export default function Header() {
+const NAV_LINKS = [
+    // { name: "Home", href: "/" },
+    { name: "About Us", href: "/about-us" },
+    { name: "Gifting", href: "/gifting" },
+    { name: "Catalogue", href: "/catalogue" },
+];
+
+const MOBILE_LINKS = [
+    ...NAV_LINKS,
+    { name: "Contact Us", href: "/contact-us" },
+];
+
+export default function Header({ isHomePage = true }) {
     const [open, setOpen] = useState(false);
     const [showHeader, setShowHeader] = useState(true);
     const [scrolledPastHero, setScrolledPastHero] = useState(false);
 
-    const links = [
-        { name: "Home", href: "/" },
-        { name: "About Us", href: "/about" },
-        { name: "Gifting", href: "/gifting" },
-        { name: "Catalogue", href: "/catalogue" },
-    ];
+    // Home: brown | Other pages: white
+    const navColor = isHomePage ? "text-[#412F23]" : "text-white";
+    const underlineColor = isHomePage
+        ? "bg-[#412F23]"
+        : "bg-white";
 
     useEffect(() => {
         let lastScrollY = window.scrollY;
@@ -23,77 +34,101 @@ export default function Header() {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            // Apply background only after first 100vh
-            setScrolledPastHero(currentScrollY >= window.innerHeight);
+            setScrolledPastHero(
+                currentScrollY >= window.innerHeight
+            );
 
-            // Header show / hide
             if (currentScrollY < 50) {
                 setShowHeader(true);
-            } else if (currentScrollY > lastScrollY) {
-                setShowHeader(false);
             } else {
-                setShowHeader(true);
+                setShowHeader(currentScrollY <= lastScrollY);
             }
 
             lastScrollY = currentScrollY;
         };
 
-        // Set initial state
         handleScroll();
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, {
+            passive: true,
+        });
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
+    const headerBackground = scrolledPastHero
+        ? "bg-white/10 backdrop-blur-md"
+        : "bg-transparent backdrop-blur-0";
+
+    const headerVisibility = showHeader
+        ? "translate-y-0"
+        : "-translate-y-full";
+
     return (
         <header
             className={`
-                fixed top-0 left-0 z-50 w-full
+                fixed inset-x-0 top-0 z-50 w-full
                 transition-all duration-500
-                ${
-                    scrolledPastHero
-                        ? "bg-white/10 backdrop-blur-md"
-                        : "bg-transparent backdrop-blur-0"
-                }
-                ${
-                    showHeader
-                        ? "translate-y-0"
-                        : "-translate-y-full"
-                }
+                ${headerBackground}
+                ${headerVisibility}
             `}
         >
-            <div className="mx-auto flex max-w-[90%] items-center justify-between py-3 md:py-5">
-
+            <div
+                className="
+                    mx-auto flex max-w-[90%]
+                    items-center justify-between
+                    py-3 md:py-5
+                "
+            >
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="text-sm font-semibold uppercase tracking-[0.18em] text-[#412F23]"
+                    aria-label="Home"
                 >
                     <Image
-                        src="/images/brand/logo-dark.png"
-                        alt="brand"
+                        src={
+                            isHomePage
+                                ? "/images/brand/logo-dark.png"
+                                : "/images/brand/logo-white.png"
+                        }
+                        alt="Brand"
                         width={100}
                         height={100}
+                        priority
                     />
                 </Link>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden items-center gap-10 md:flex">
-                    {links.map((item, index) => (
+                <nav
+                    className="hidden items-center gap-20 md:flex"
+                    aria-label="Main navigation"
+                >
+                    {NAV_LINKS.map((item) => (
                         <Link
-                            key={item.name}
+                            key={item.href}
                             href={item.href}
-                            className="group relative overflow-hidden text-sm font-semibold uppercase tracking-[0.12em] text-[#412F23] transition-all duration-300"
-                            style={{
-                                animationDelay: `${index * 120}ms`,
-                            }}
+                            className={`
+                                group relative overflow-hidden
+                                text-sm font-semibold uppercase
+                                tracking-[0.12em]
+                                ${navColor}
+                                transition-colors duration-300
+                            `}
                         >
                             {item.name}
 
-                            <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#412F23] transition-transform duration-500 group-hover:scale-x-100" />
+                            <span
+                                className={`
+                                    absolute bottom-0 left-0
+                                    h-px w-full
+                                    origin-left scale-x-0
+                                    ${underlineColor}
+                                    transition-transform duration-500
+                                    group-hover:scale-x-100
+                                `}
+                            />
                         </Link>
                     ))}
                 </nav>
@@ -101,21 +136,42 @@ export default function Header() {
                 {/* Contact */}
                 <Link
                     href="/contact-us"
-                    className="group relative hidden text-sm font-semibold uppercase tracking-[0.12em] text-[#412F23] md:block"
+                    className={`
+                        group relative hidden
+                        text-sm font-semibold uppercase
+                        tracking-[0.12em]
+                        ${navColor}
+                        md:block
+                    `}
                 >
                     Contact Us
 
-                    <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#412F23] transition-transform duration-500 group-hover:scale-x-100" />
+                    <span
+                        className={`
+                            absolute bottom-0 left-0
+                            h-px w-full
+                            origin-left scale-x-0
+                            ${underlineColor}
+                            transition-transform duration-500
+                            group-hover:scale-x-100
+                        `}
+                    />
                 </Link>
 
-                {/* Mobile Button */}
+                {/* Mobile Menu Button */}
                 <button
+                    type="button"
                     onClick={() => setOpen(true)}
-                    className="transition-transform duration-300 hover:scale-110 md:hidden"
+                    aria-label="Open menu"
+                    aria-expanded={open}
+                    className="
+                        transition-transform duration-300
+                        hover:scale-110 md:hidden
+                    "
                 >
                     <Menu
-                        className="text-[#412F23]"
                         size={24}
+                        className={navColor}
                     />
                 </button>
             </div>
@@ -123,22 +179,27 @@ export default function Header() {
             {/* Mobile Menu */}
             <div
                 className={`
-                    min-h-screen fixed inset-0 z-[100]
+                    fixed inset-0 z-[100] min-h-screen
                     bg-[#FFF9ED]
                     transition-all duration-700
                     ease-[cubic-bezier(.22,1,.36,1)]
-                    ${
-                        open
-                            ? "translate-x-0 opacity-100"
-                            : "translate-x-full opacity-0 pointer-events-none"
+                    ${open
+                        ? "translate-x-0 opacity-100"
+                        : "pointer-events-none translate-x-full opacity-0"
                     }
                 `}
+                aria-hidden={!open}
             >
-                {/* Close */}
+                {/* Close Button */}
                 <div className="flex justify-end p-6">
                     <button
+                        type="button"
                         onClick={() => setOpen(false)}
-                        className="transition-transform duration-300 hover:rotate-90"
+                        aria-label="Close menu"
+                        className="
+                            transition-transform duration-300
+                            hover:rotate-90
+                        "
                     >
                         <X
                             size={28}
@@ -147,27 +208,23 @@ export default function Header() {
                     </button>
                 </div>
 
-                {/* Links */}
-                <div className="flex flex-col gap-8 px-8 pt-10">
-                    {[
-                        ...links,
-                        {
-                            name: "Contact Us",
-                            href: "/contact-us",
-                        },
-                    ].map((item, index) => (
+                {/* Mobile Navigation */}
+                <nav
+                    className="flex flex-col gap-8 px-8 pt-10"
+                    aria-label="Mobile navigation"
+                >
+                    {MOBILE_LINKS.map((item, index) => (
                         <Link
-                            key={item.name}
+                            key={item.href}
                             href={item.href}
                             onClick={() => setOpen(false)}
                             className={`
                                 text-3xl font-semibold uppercase
                                 text-[#412F23]
                                 transition-all duration-700
-                                ${
-                                    open
-                                        ? "translate-x-0 opacity-100"
-                                        : "translate-x-10 opacity-0"
+                                ${open
+                                    ? "translate-x-0 opacity-100"
+                                    : "translate-x-10 opacity-0"
                                 }
                             `}
                             style={{
@@ -177,7 +234,7 @@ export default function Header() {
                             {item.name}
                         </Link>
                     ))}
-                </div>
+                </nav>
             </div>
         </header>
     );

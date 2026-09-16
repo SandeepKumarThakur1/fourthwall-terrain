@@ -87,6 +87,7 @@ body {
 
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
 }
 
 
@@ -139,11 +140,9 @@ body {
 ========================================================= */
 
 .sectionBg {
-    background: linear-gradient(
-        to bottom,
-        #fff9ed 0%,
-        #ffffff 100%
-    );
+    background: linear-gradient(to bottom,
+            #fff9ed 0%,
+            #ffffff 100%);
 
     color: #0a0a0a;
 }
@@ -162,33 +161,25 @@ body {
     z-index: 1;
     pointer-events: none;
     background-image:
-        repeating-linear-gradient(
-            to right,
+        repeating-linear-gradient(to right,
             rgba(99, 64, 32, 0.07) 0,
             rgba(99, 64, 32, 0.07) 1px,
             transparent 1px,
-            transparent 80px
-        ),
-        repeating-linear-gradient(
-            to bottom,
+            transparent 80px),
+        repeating-linear-gradient(to bottom,
             rgba(99, 64, 32, 0.07) 0,
             rgba(99, 64, 32, 0.07) 1px,
             transparent 1px,
-            transparent 70px
-        );
+            transparent 70px);
 }
 
 .terrain-edge {
     position: absolute;
-
     top: -10vw;
     left: 0;
-
     width: 100%;
     height: auto;
-
     display: block;
-
     pointer-events: none;
 }
 
@@ -211,11 +202,9 @@ body {
 ========================================================= */
 
 .testimonialWrapper {
-    background: linear-gradient(
-        69deg,
-        #f3f2ed,
-        #ccc8c3
-    );
+    background: linear-gradient(69deg,
+            #f3f2ed,
+            #ccc8c3);
 }
 
 .animate-marquee:hover {
@@ -249,11 +238,23 @@ body {
 ========================================================= */
 
 .ourprocessWrapper {
-    background-image: url("/images/processBg.png");
+    position: relative;
+    overflow: hidden;
+    background: #062400;
+}
 
+.ourprocessBackground {
+    position: absolute;
+    inset: 0;
+    width: 200%;
+    height: 100%;
+    background-image: url("/images/processBg.png");
     background-position: left center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 50% 100%;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
 }
 
 
@@ -275,11 +276,9 @@ body {
     padding: 18px 30px;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             #638552 0%,
-            #082602 100%
-        );
+            #082602 100%);
 
     color: #ffffff;
 
@@ -323,14 +322,12 @@ body {
     height: 100%;
 
     background:
-        linear-gradient(
-            100deg,
+        linear-gradient(100deg,
             transparent 0%,
             rgba(255, 255, 255, 0.08) 35%,
             rgba(255, 255, 255, 0.45) 50%,
             rgba(255, 255, 255, 0.08) 65%,
-            transparent 100%
-        );
+            transparent 100%);
 
     transform: skewX(-20deg);
 
@@ -363,11 +360,9 @@ body {
     transform: translateY(-3px);
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             #729b60 0%,
-            #0d3509 100%
-        );
+            #0d3509 100%);
 
     box-shadow:
         0 12px 30px rgba(8, 38, 2, 0.22);
@@ -418,20 +413,16 @@ body {
         top: -7vw;
 
         background-image:
-            repeating-linear-gradient(
-                to right,
+            repeating-linear-gradient(to right,
                 rgba(99, 64, 32, 0.07) 0,
                 rgba(99, 64, 32, 0.07) 1px,
                 transparent 1px,
-                transparent 60px
-            ),
-            repeating-linear-gradient(
-                to bottom,
+                transparent 60px),
+            repeating-linear-gradient(to bottom,
                 rgba(99, 64, 32, 0.07) 0,
                 rgba(99, 64, 32, 0.07) 1px,
                 transparent 1px,
-                transparent 60px
-            );
+                transparent 60px);
     }
 
     .terrain-edge {
@@ -474,21 +465,17 @@ body {
     ----------------------------------------- */
 
     .text-headline-1 {
-        font-size: clamp(
-            42px,
-            11vw,
-            72px
-        );
+        font-size: clamp(42px,
+                11vw,
+                72px);
 
         line-height: 0.95;
     }
 
     .font-subheading {
-        font-size: clamp(
-            24px,
-            7vw,
-            44px
-        );
+        font-size: clamp(24px,
+                7vw,
+                44px);
 
         line-height: 1;
     }
@@ -505,20 +492,16 @@ body {
         height: 110%;
 
         background-image:
-            repeating-linear-gradient(
-                to right,
+            repeating-linear-gradient(to right,
                 rgba(99, 64, 32, 0.07) 0,
                 rgba(99, 64, 32, 0.07) 1px,
                 transparent 1px,
-                transparent 40px
-            ),
-            repeating-linear-gradient(
-                to bottom,
+                transparent 40px),
+            repeating-linear-gradient(to bottom,
                 rgba(99, 64, 32, 0.07) 0,
                 rgba(99, 64, 32, 0.07) 1px,
                 transparent 1px,
-                transparent 40px
-            );
+                transparent 40px);
     }
 
     .terrain-edge {
@@ -543,11 +526,9 @@ body {
 
     .testimonialWrapper {
         background:
-            linear-gradient(
-                69deg,
+            linear-gradient(69deg,
                 #f3f2ed,
-                #ccc8c3
-            );
+                #ccc8c3);
     }
 
     .animate-marquee {
@@ -591,39 +572,31 @@ body {
 @media (max-width: 480px) {
 
     .text-headline-1 {
-        font-size: clamp(
-            36px,
-            12vw,
-            54px
-        );
+        font-size: clamp(36px,
+                12vw,
+                54px);
     }
 
     .font-subheading {
-        font-size: clamp(
-            22px,
-            7vw,
-            34px
-        );
+        font-size: clamp(22px,
+                7vw,
+                34px);
     }
 
     .craftedBg {
         top: -10vw;
 
         background-image:
-            repeating-linear-gradient(
-                to right,
+            repeating-linear-gradient(to right,
                 rgba(99, 64, 32, 0.065) 0,
                 rgba(99, 64, 32, 0.065) 1px,
                 transparent 1px,
-                transparent 32px
-            ),
-            repeating-linear-gradient(
-                to bottom,
+                transparent 32px),
+            repeating-linear-gradient(to bottom,
                 rgba(99, 64, 32, 0.065) 0,
                 rgba(99, 64, 32, 0.065) 1px,
                 transparent 1px,
-                transparent 32px
-            );
+                transparent 32px);
     }
 
     .terrain-edge {
@@ -662,20 +635,16 @@ body {
 
     .craftedBg {
         background-image:
-            repeating-linear-gradient(
-                to right,
+            repeating-linear-gradient(to right,
                 rgba(99, 64, 32, 0.06) 0,
                 rgba(99, 64, 32, 0.06) 1px,
                 transparent 1px,
-                transparent 28px
-            ),
-            repeating-linear-gradient(
-                to bottom,
+                transparent 28px),
+            repeating-linear-gradient(to bottom,
                 rgba(99, 64, 32, 0.06) 0,
                 rgba(99, 64, 32, 0.06) 1px,
                 transparent 1px,
-                transparent 28px
-            );
+                transparent 28px);
     }
 }
 
@@ -697,11 +666,9 @@ body {
         box-shadow: none;
 
         background:
-            linear-gradient(
-                90deg,
+            linear-gradient(90deg,
                 #638552 0%,
-                #082602 100%
-            );
+                #082602 100%);
     }
 
     .btn-cta:hover span {
