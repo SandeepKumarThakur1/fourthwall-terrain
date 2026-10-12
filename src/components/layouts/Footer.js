@@ -417,7 +417,7 @@ export default function Footer() {
 
                                 <Plus
                                     size={18}
-                                    className={`transition-all duration-500 ${active === index ? "rotate-45" : ""
+                                    className={`transition-all text-[#FFF9ED] duration-500 ${active === index ? "rotate-45" : ""
                                         }`}
                                 />
 

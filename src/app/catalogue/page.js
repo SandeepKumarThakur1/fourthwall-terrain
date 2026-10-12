@@ -113,27 +113,35 @@ export default function CataloguePage() {
     return (
         <>
             <Hero category={activeCategory} />
+
             <CollectionBanner activeCategory={activeCategory}>
                 <CategoryTabs
                     activeCategory={activeCategory}
                     setActiveCategory={setActiveCategory}
                 />
 
-                <div className="mx-auto max-w-[70%] py-16">
-                    <div className="flex items-center justify-between">
-                        <h2 className="text-[44px] leading-[150%] tracking-[-4%] text-white font-subheading">
+                <div className="mx-auto w-full max-w-[70%] py-16 max-lg:max-w-[85%] max-md:max-w-[92%] max-md:py-10 max-sm:py-8">
+                    {/* Collection Header */}
+                    <div className="flex items-center justify-between gap-4 max-sm:flex-col max-sm:items-start">
+                        <h2 className="font-subheading text-[44px] font-normal leading-[150%] tracking-[-4%] text-white max-md:text-[36px] max-sm:text-[28px]">
                             Our collection
                         </h2>
 
-                        <IndoorOutdoorToggle
-                            value={environment}
-                            onChange={setEnvironment}
-                        />
+                        <div className="shrink-0">
+                            <IndoorOutdoorToggle
+                                value={environment}
+                                onChange={setEnvironment}
+                            />
+                        </div>
                     </div>
 
-                    <ProductGrid products={filteredProducts} />
+                    {/* Products */}
+                    <div className="mt-8 max-sm:mt-6">
+                        <ProductGrid products={filteredProducts} />
+                    </div>
                 </div>
             </CollectionBanner>
         </>
     );
+
 }   

@@ -145,7 +145,7 @@ export default function ContactPage() {
       {/* Page Content */}
       <div className="relative z-10 mx-auto flex min-h-screen w-[90%] flex-col">
         {/* Header */}
-        <header className="flex items-center justify-between py-4 lg:py-5">
+        <header className="hidden items-center justify-between py-4 lg:py-5 md:flex">
           {/* White Logo */}
           <Link
             href="/"
@@ -232,7 +232,7 @@ export default function ContactPage() {
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-white/30 py-4">
+        <footer className="hidden border-t border-white/30 py-4 md:block">
           <div className="flex flex-col items-center justify-between gap-3 text-center text-xs text-white sm:text-sm md:flex-row md:text-left">
             <p>© 2026 Fourthwall Terrains. All rights reserved.</p>
 
