@@ -20,7 +20,7 @@ export default function IndoorOutdoorToggle({
                 onClick={() =>
                     onChange(isIndoor ? "Outdoor" : "Indoor")
                 }
-                className={`relative h-6 w-12 rounded-full transition-colors duration-300 ${isIndoor ? "bg-green-500" : "bg-gray-300"
+                className={`relative h-6 w-12 rounded-full transition-colors duration-300 ${isIndoor ? "bg-[#082602]" : "bg-gray-300"
                     }`}
             >
                 <span

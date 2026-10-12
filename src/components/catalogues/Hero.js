@@ -1,11 +1,20 @@
 "use client";
 
+// const heroVideos = {
+//   "All Products": "/videos/all-products.mp4",
+//   "River Residue": "/videos/all-products.mp4",
+//   "Concrete Finish": "/videos/all-products.mp4",
+//   "Natural Stone": "/videos/all-products.mp4",
+//   "Decorative Panels": "/videos/all-products.mp4",
+// };
+
 const heroVideos = {
   "All Products": "/videos/all-products.mp4",
   "River Residue": "/videos/all-products.mp4",
-  "Concrete Finish": "/videos/all-products.mp4",
-  "Natural Stone": "/videos/all-products.mp4",
-  "Decorative Panels": "/videos/all-products.mp4",
+  "Canyon Crust": "/videos/all-products.mp4",
+  "Roselle Editions": "/videos/all-products.mp4",
+  "Sand Dunes": "/videos/all-products.mp4",
+  "Fossil Frost": "/videos/all-products.mp4",
 };
 
 // const heroVideos = {

@@ -184,13 +184,12 @@ body {
 }
 
 
-/* =========================================================
+    /* =========================================================
    GIFTING SECTION
 ========================================================= */
 
 .giftingWrapper {
     background-image: url("/images/giftBg2.png");
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

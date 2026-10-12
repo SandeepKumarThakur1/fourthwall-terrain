@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { faqs } from "@/data/faqs"; 
+import { faqs } from "@/data/faqs";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,35 +16,22 @@ export default function FAQSection() {
   const answerRefs = useRef([]);
   const iconRefs = useRef([]);
 
-  // useEffect(() => {
-  //   gsap.from(sectionRef.current, {
-  //     scrollTrigger: {
-  //       trigger: sectionRef.current,
-  //       start: "top 80%",
-  //     },
-  //     y: 80,
-  //     opacity: 0,
-  //     duration: 1,
-  //     ease: "power3.out",
-  //   });
-  // }, []);
-
   useEffect(() => {
-  const ctx = gsap.context(() => {
-    gsap.from(sectionRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-      },
-      y: 80,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-  }, sectionRef);
+    const ctx = gsap.context(() => {
+      gsap.from(sectionRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+        y: 80,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+    }, sectionRef);
 
-  return () => ctx.revert();
-}, []);
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     answerRefs.current.forEach((answer, index) => {
@@ -58,16 +45,6 @@ export default function FAQSection() {
         duration: 0.45,
         ease: "power2.out",
       });
-
-      // if (iconRefs.current[index]) {
-      //   gsap.killTweensOf(iconRefs.current[index]);
-
-      //   gsap.to(iconRefs.current[index], {
-      //     rotate: active === index ? 180 : 0,
-      //     duration: 0.35,
-      //     ease: "power2.out",
-      //   });
-      // }
     });
   }, [active]);
 
@@ -99,7 +76,7 @@ export default function FAQSection() {
             {faqs.map((item, index) => (
               <div
                 key={item.question}
-                className="border-b border-[#E2D9CB]"
+                className="border-b border-[#E2D9CB] last:border-b-0"
               >
                 <button
                   onClick={() =>
@@ -110,31 +87,29 @@ export default function FAQSection() {
                   {/* Question */}
                   <span
                     className={`flex-1 text-[16px] leading-[150%] transition-all duration-300 md:text-[18px]
-                      ${
-                        active === index
-                          ? "font-medium text-[#634020]"
-                          : "text-[#634020] group-hover:text-[#634020]"
+                      ${active === index
+                        ? "font-medium text-[#634020]"
+                        : "text-[#634020] group-hover:text-[#634020]"
                       }`}
                   >
                     {item.question}
                   </span>
 
-{/* Chevron Icon */}
-<div
-  className={`flex h-9 w-9 shrink-0 items-center justify-center
+                  {/* Chevron Icon */}
+                  <div
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center
     transition-all duration-300
-    ${
-      active === index
-        ? "text-[#697A07]"
-        : "text-[#634020] group-hover:text-[#697A07]"
-    }`}
->
-  {active === index ? (
-    <ChevronUp size={24} strokeWidth={2.2} />
-  ) : (
-    <ChevronDown size={24} strokeWidth={2.2} />
-  )}
-</div>
+    ${active === index
+                        ? "text-[#697A07]"
+                        : "text-[#634020] group-hover:text-[#697A07]"
+                      }`}
+                  >
+                    {active === index ? (
+                      <ChevronUp size={24} strokeWidth={2.2} />
+                    ) : (
+                      <ChevronDown size={24} strokeWidth={2.2} />
+                    )}
+                  </div>
                 </button>
 
                 {/* Answer */}

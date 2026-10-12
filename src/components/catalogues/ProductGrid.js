@@ -42,8 +42,8 @@ export default function ProductGrid({ products }) {
     return (
       <section className="py-[27px]">
         <div className="container mx-auto px-4">
-          <div className="flex h-64 items-center justify-center rounded-xl border border-dashed border-gray-300 bg-gray-50/20">
-            <p className="text-lg text-gray-500">
+          <div className="flex h-64 items-center justify-center rounded-xl border border-dashed border-gray-300 bg-white/20">
+            <p className="text-lg text-white">
               No products found.
             </p>
           </div>

@@ -7,12 +7,14 @@
 //   "Granite Collection",
 //   "Natural Collection",
 // ];
+
 const categories = [
     "All Products",
     "River Residue",
-    "Concrete Finish",
-    "Natural Stone",
-    "Decorative Panels",
+    "Canyon Crust",
+    "Roselle Editions",
+    "Sand Dunes",
+    "Fossil Frost",
 ];
 
 export default function CategoryTabs({
@@ -22,7 +24,7 @@ export default function CategoryTabs({
     return (
         <section className="mx-auto max-w-[70%] pt-10">
             <div className="">
-                <div className="flex items-center justify-between gap-[40px] overflow-x-auto py-5 scrollbar-hide">
+                <div className="flex items-center justify-between gap-[25px] overflow-x-auto py-5 scrollbar-hide">
                     {categories.map((category) => {
                         const isActive = activeCategory === category;
 

@@ -260,10 +260,10 @@ export default function ProductCard({ product }) {
           </p>
 
           <div className="mt-4 flex items-center justify-between">
-            <span className="font-subheading text-white text-[18px] leading-[150%] tracking-[-4%] font-[600]">
+            <span className="text-white text-[18px] leading-[150%] tracking-[-4%] font-[600]">
               {product.price}
             </span>
-          </div>
+          </div>  
         </div>
       </Link>
     </article>

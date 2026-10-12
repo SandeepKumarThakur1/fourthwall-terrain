@@ -335,7 +335,7 @@ export default function Footer() {
                         > */}
                             {/* Logo */}
                             <Image
-                                src="/images/brand/logo-white.png"
+                                src="/images/brand/logo-white.svg"
                                 alt="brand"
                                 width={150}
                                 height={150}
@@ -385,7 +385,7 @@ export default function Footer() {
                         className="flex h-14 w-44 items-center justify-center rounded-sm font-semibold uppercase tracking-[0.15em] transition-all duration-300 "
                     >
                         <Image
-                            src="/images/brand/logo-white.png"
+                            src="/images/brand/logo-white.svg"
                             alt="brand"
                             width={150}
                             height={150}
