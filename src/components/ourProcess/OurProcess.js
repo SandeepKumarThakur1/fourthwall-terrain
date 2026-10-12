@@ -665,8 +665,8 @@ export default function OurProcess() {
                             
 
                                             ${isDown
-                                            // ? "md:justify-end md:pb-[0.2vh]"
-                                            // : "md:justify-start md:pt-[0.2vh]"
+                                            ? "md:justify-end md:pb-[20px]"
+                                            : "md:justify-start md:pt-[30px]"
                                             }
                                         `}
                                     >

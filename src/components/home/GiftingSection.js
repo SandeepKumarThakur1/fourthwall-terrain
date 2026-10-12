@@ -52,60 +52,60 @@ export default function GiftingSection() {
   const headingRef = useRef(null);
   const imageRef = useRef(null);
 
-useEffect(() => {
-  const ctx = gsap.context(() => {
-    // Initial states
-    gsap.set(headingRef.current, {
-      y: 0,
-      opacity: 1,
-    });
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Initial states
+      gsap.set(headingRef.current, {
+        y: 0,
+        opacity: 1,
+      });
 
-    gsap.set(imageRef.current, {
-      y: 0,
-      scale: 1,
-    });
+      gsap.set(imageRef.current, {
+        y: 0,
+        scale: 1,
+      });
 
-    // Scroll-based animation
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 10%",
-        end: "top 50%",
-        scrub: 1,
-        invalidateOnRefresh: true,
-        markers: false, // Set to true for debugging
-      },
-    });
+      // Scroll-based animation
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top -10%",
+          end: "top 50%",
+          scrub: 1,
+          invalidateOnRefresh: true,
+          markers: false, // Set to true for debugging
+        },
+      });
 
-    // Text moves slightly up and fades
-    tl.to(
-      headingRef.current,
-      {
-        y: -35,
-        opacity: 0.35,
-        ease: "none",
-      },
-      0
-    );
+      // Text moves slightly up and fades
+      tl.to(
+        headingRef.current,
+        {
+          y: -35,
+          opacity: 0.35,
+          ease: "none",
+        },
+        0
+      );
 
-    // Image moves slightly up and becomes smaller
-    tl.to(
-      imageRef.current,
-      {
-        y: -25,
-        scale: 0.95,
-        ease: "none",
-      },
-      0
-    );
+      // Image moves slightly up and becomes smaller
+      tl.to(
+        imageRef.current,
+        {
+          y: -25,
+          scale: 0.95,
+          ease: "none",
+        },
+        0
+      );
 
-    // Button remains unchanged
-  }, sectionRef);
+      // Button remains unchanged
+    }, sectionRef);
 
-  ScrollTrigger.refresh();
+    ScrollTrigger.refresh();
 
-  return () => ctx.revert();
-}, []);
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section

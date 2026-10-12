@@ -224,12 +224,12 @@ const sections = [
     {
         title: "Collection",
         links: [
-            { label: "River Residue", href: "/collections/river-residue" },
-            { label: "Canyon Crust", href: "/collections/canyon-crust" },
-            { label: "Roselle Editions", href: "/collections/roselle-editions" },
-            { label: "Sand Dunes", href: "/collections/sand-dunes" },
-            { label: "Fossil Frost", href: "/collections/fossil-frost" },
-            { label: "The Gifting Collection", href: "/collections/gifting" },
+            { label: "River Residue", href: "/catalogue" },
+            { label: "Canyon Crust", href: "/catalogue" },
+            { label: "Roselle Editions", href: "/catalogue" },
+            { label: "Sand Dunes", href: "/catalogue" },
+            { label: "Fossil Frost", href: "/catalogue" },
+            { label: "The Gifting Collection", href: "/catalogue" },
         ],
     },
     {
